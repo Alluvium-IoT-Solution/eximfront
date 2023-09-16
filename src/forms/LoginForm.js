@@ -160,7 +160,7 @@ const LoginForm = (props) => {
           }}
           onClick={() => props.setForgotPassword(true)}
         >
-          Forgot username?
+          Forgot password?
         </p>
       )}
     </form>
