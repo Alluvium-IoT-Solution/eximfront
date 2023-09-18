@@ -8,6 +8,7 @@ export const convertToExcel = async (
   detailedStatus,
   headers
 ) => {
+  console.log(rows, importer, status, detailedStatus, headers);
   if (rows.length === 0) {
     alert("No Data to export");
     return;
@@ -32,9 +33,9 @@ export const convertToExcel = async (
       .map((container) => container.size)
       .join(",\n");
 
-    const unit_price = (item.cif_amount / item.ex_rate).toFixed(2);
+    const inv_value = (item.cif_amount / item.ex_rate).toFixed(2);
 
-    const invoice_value_and_unit_price = `\u20B9 ${item.cif_amount} | ${item.inv_currency} ${unit_price}`;
+    const invoice_value_and_unit_price = `${item.inv_currency} ${inv_value} | ${item.unit_price}`;
 
     const valueMap = {
       "JOB NO": item.job_no,

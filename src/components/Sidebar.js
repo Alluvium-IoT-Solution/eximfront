@@ -142,6 +142,9 @@ function Sidebar() {
           setUser(null);
           navigate("/");
           localStorage.removeItem("user");
+          localStorage.removeItem("selectedImporter");
+          localStorage.removeItem("assignedImporters");
+          localStorage.removeItem("importerName");
         }}
       >
         <div className="sidebar-link">

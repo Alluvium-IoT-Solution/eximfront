@@ -78,28 +78,6 @@ function JobsList() {
         </button>
       </div>
 
-      {/* <DataGrid
-        getRowId={(row) => row.job_no}
-        sx={{
-          padding: "0 30px",
-          height: "680px",
-          "& .MuiDataGrid-row:hover": {
-            backgroundColor: "#f8f5ff",
-          },
-        }}
-        className="table expense-table"
-        headerAlign="center"
-        rows={rows}
-        columns={columns}
-        pageSize={50}
-        stickyHeader
-        rowsPerPageOptions={[50]}
-        getRowHeight={() => "auto"}
-        autoHeight={false}
-        disableSelectionOnClick
-        getRowClassName={getTableRowsClassname}
-      /> */}
-
       <DataGrid
         getRowId={(row) => row.job_no}
         sx={{

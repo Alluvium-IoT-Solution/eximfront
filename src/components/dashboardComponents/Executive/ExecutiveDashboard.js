@@ -11,6 +11,7 @@ import { SelectedImporterContext } from "../../../Context/SelectedImporterContex
 import { TextField } from "@mui/material";
 import Autocomplete from "@mui/material/Autocomplete";
 import { AssignedImportersContext } from "../../../Context/AssignedImportersContext";
+import { ClientContext } from "../../../Context/ClientContext";
 
 const ExecutiveDashboard = () => {
   // Modal
@@ -23,6 +24,7 @@ const ExecutiveDashboard = () => {
   const { selectedImporter, setSelectedImporter } = useContext(
     SelectedImporterContext
   );
+  const { setImporterName } = useContext(ClientContext);
 
   const { user } = useContext(UserContext);
 
@@ -46,8 +48,9 @@ const ExecutiveDashboard = () => {
             id="user"
             name="user"
             onChange={(event, newValue) => {
+              setImporterName(newValue);
               setSelectedImporter(newValue);
-              localStorage.setItem("selectedImporter", newValue);
+              localStorage.setItem("importerName", newValue);
             }}
             value={selectedImporter}
             style={{ marginBottom: "15px" }}
