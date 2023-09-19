@@ -38,41 +38,37 @@ const ExecutiveDashboard = () => {
       <Container fluid className="dashboard-container">
         <div style={{ display: "flex", marginTop: "20px" }}>
           <h4 style={{ flex: 1 }}>Hello, {user.username}</h4>
-          <Autocomplete
-            options={importerList}
-            getOptionLabel={(option) => option}
-            sx={{ width: "500px !important" }}
-            renderInput={(params) => (
-              <TextField {...params} label="Select importer" />
-            )}
-            id="user"
-            name="user"
-            onChange={(event, newValue) => {
-              setImporterName(newValue);
-              setSelectedImporter(newValue);
-              localStorage.setItem("importerName", newValue);
-              localStorage.setItem(
-                "importer",
-                newValue
-                  .toLowerCase()
-                  .replace(/ /g, "_")
-                  .replace(/\./g, "")
-                  .replace(/\//g, "_")
-                  .replace(/-/g, "")
-                  .replace(/_+/g, "_")
-                  .replace(/\(/g, "")
-                  .replace(/\)/g, "")
-                  .replace(/\[/g, "")
-                  .replace(/\]/g, "")
-                  .replace(/,/g, "")
-              );
-            }}
-            value={selectedImporter}
-            style={{ marginBottom: "15px" }}
-          />
+          {user.role === "Executive" && user.role === "Assistant Manager" && (
+            <Autocomplete
+              options={importerList}
+              getOptionLabel={(option) => option}
+              sx={{ width: "500px !important" }}
+              renderInput={(params) => (
+                <TextField {...params} label="Select importer" />
+              )}
+              id="user"
+              name="user"
+              onChange={(event, newValue) => {
+                setImporterName(newValue);
+                setSelectedImporter(newValue);
+                localStorage.setItem("importerName", newValue);
+              }}
+              value={selectedImporter}
+              style={{ marginBottom: "15px" }}
+            />
+          )}
         </div>
 
         <JobsOverview selectedYear={selectedYear} />
+
+        <Container fluid className="dashboard-container">
+          <Row>
+            {user.role !== "Executive" && user.role !== "Assistant Manager" && (
+              <ImporterWiseDetails selectedYear={selectedYear} />
+            )}
+            <Col xs={6} className="dashboard-col"></Col>
+          </Row>
+        </Container>
       </Container>
       <RegisterModal
         openRegisterModal={openRegisterModal}
