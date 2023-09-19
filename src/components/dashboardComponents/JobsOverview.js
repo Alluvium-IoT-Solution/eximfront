@@ -24,7 +24,7 @@ function JobsOverview(props) {
 
   useEffect(() => {
     async function getJobsOverview() {
-      if (user.role === "Executive") {
+      if (user.role === "Executive" || user.role === "Assistant Manager") {
         if (selectedImporter) {
           setJobs({
             totalJobs: 0,

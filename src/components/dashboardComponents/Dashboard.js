@@ -9,13 +9,16 @@ const Dashboard = () => {
 
   return (
     <>
-      {user.role === "Director" ||
+      {/* {user.role === "Director" ||
       user.role === "General Manager" ||
       user.role === "Senior Manager" ? (
         <ManagerDashboard />
+      ) : user.role === "Assistant Manager" ? (
+        <ExecutiveDashboard />
       ) : (
         <ExecutiveDashboard />
-      )}
+      )} */}
+      <ExecutiveDashboard />
     </>
   );
 };

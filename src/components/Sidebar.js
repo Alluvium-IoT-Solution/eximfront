@@ -20,7 +20,8 @@ function Sidebar() {
   const isUserRoleUser =
     user.role !== "Director" ||
     user.role !== "General Manager" ||
-    user.role !== "Senior Manager";
+    user.role !== "Senior Manager" ||
+    user.role !== "Assistant Manager";
 
   const sidebarDataArray = sidebarData(user.role, user.importerURL);
   const { selectedImporter } = useContext(SelectedImporterContext);
@@ -64,7 +65,7 @@ function Sidebar() {
           user.role !== "Senior Manager" &&
           (name === "Importer" || name === "Main Report")
         ) {
-          return null; // Hide Importer and Main Report if user.role === User
+          return null; // Hide Importer and Main Report
         }
 
         return (
@@ -95,7 +96,9 @@ function Sidebar() {
                 >
                   <NavLink
                     to={
-                      user.role === "Executive" && selectedImporter
+                      (user.role === "Executive" ||
+                        user.role === "Assistant Manager") &&
+                      selectedImporter
                         ? `${selectedImporter
                             .toLowerCase()
                             .replace(/ /g, "_")

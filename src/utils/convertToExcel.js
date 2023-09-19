@@ -8,7 +8,6 @@ export const convertToExcel = async (
   detailedStatus,
   headers
 ) => {
-  console.log(rows, importer, status, detailedStatus, headers);
   if (rows.length === 0) {
     alert("No Data to export");
     return;
@@ -91,6 +90,8 @@ export const convertToExcel = async (
       "DUTY PAID DATE": item.duty_paid_date,
       "OUT OF CHARGE DATE": item.out_of_charge_date,
     };
+
+    console.log(item);
 
     // eslint-disable-next-line
     const values = headers.map((val) => {
@@ -180,7 +181,7 @@ export const convertToExcel = async (
 
   // Increase the height of the header row
   headerRow.height = 35;
-
+  console.log(dataWithHeaders);
   ///////////////////////////////////////  Data Row  //////////////////////////////////////
   // Add the data rows
   for (const row of dataWithHeaders) {
@@ -199,6 +200,12 @@ export const convertToExcel = async (
         type: "pattern",
         pattern: "solid",
         fgColor: { argb: "FFCCFFFF" },
+      };
+    } else if (detailedStatus === "Discharged") {
+      dataRow.fill = {
+        type: "pattern",
+        pattern: "solid",
+        fgColor: { argb: "FFF4B183" },
       };
     } else if (detailedStatus === "BE Noted, Arrival Pending") {
       dataRow.fill = {

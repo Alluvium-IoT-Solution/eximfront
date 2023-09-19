@@ -1,0 +1,984 @@
+[{
+  "_id": {
+    "$oid": "64f0474cf5e8a5f037ac0f6f"
+  },
+  "username": "Manu",
+  "email": "manu@surajforwarders.com",
+  "role": "Director",
+  "password": "$2b$10$qqfdZ7j0JFl5j93.XqLyC.5e1yNbF/1a5/L/Y1Y97Ytvwobk.3gFO",
+  "__v": 22,
+  "importers": [],
+  "otp": null
+},
+{
+  "_id": {
+    "$oid": "64fee4d478ca868e4999d023"
+  },
+  "username": "PRAMOD",
+  "email": "pramod@surajforwarders.com",
+  "password": "$2b$10$PjVixq./XTfKnYZnnU5g5uiHhA6PqiV3ZNIoCxhNSJ1HFPzwRgvIq",
+  "role": "Assistant Manager",
+  "importers": [
+    {
+      "importer": "ANKIT ENTERPRISES",
+      "importerURL": "ankit_enterprises",
+      "_id": {
+        "$oid": "64feef5978ca868e49b5adab"
+      }
+    },
+    {
+      "importer": "ANEETA PLASTPACK LLP",
+      "importerURL": "aneeta_plastpack_llp",
+      "_id": {
+        "$oid": "64feef5978ca868e49b5adac"
+      }
+    },
+    {
+      "importer": "ANEETA TECHNOPACK PVT. LTD.",
+      "importerURL": "aneeta_technopack_pvt_ltd",
+      "_id": {
+        "$oid": "64feef5978ca868e49b5adad"
+      }
+    },
+    {
+      "importer": "CHANDRESH CABLES LTD",
+      "importerURL": "chandresh_cables_ltd",
+      "_id": {
+        "$oid": "64feef5978ca868e49b5adae"
+      }
+    },
+    {
+      "importer": "CHANDRESH COOPPER PRIVATE LIMITED",
+      "importerURL": "chandresh_coopper_private_limited",
+      "_id": {
+        "$oid": "64feef5978ca868e49b5adaf"
+      }
+    },
+    {
+      "importer": "CHANDRESH TECH",
+      "importerURL": "chandresh_tech",
+      "_id": {
+        "$oid": "64feef5978ca868e49b5adb0"
+      }
+    },
+    {
+      "importer": "CHIRAKKAL STEELS PRIVATE LIMITED",
+      "importerURL": "chirakkal_steels_private_limited",
+      "_id": {
+        "$oid": "64feef5978ca868e49b5adb1"
+      }
+    },
+    {
+      "importer": "GRK ALLOYS LLP",
+      "importerURL": "grk_alloys_llp",
+      "_id": {
+        "$oid": "64feef5978ca868e49b5adb2"
+      }
+    },
+    {
+      "importer": "INDORE ALUMINIUM",
+      "importerURL": "indore_aluminium",
+      "_id": {
+        "$oid": "64feef5978ca868e49b5adb3"
+      }
+    },
+    {
+      "importer": "INTERCRAFTS INDIA",
+      "importerURL": "intercrafts_india",
+      "_id": {
+        "$oid": "64feef5978ca868e49b5adb4"
+      }
+    },
+    {
+      "importer": "INTERCRAFTS PARQUETS",
+      "importerURL": "intercrafts_parquets",
+      "_id": {
+        "$oid": "64feef5978ca868e49b5adb5"
+      }
+    },
+    {
+      "importer": "JAGDISH UDHYOG",
+      "importerURL": "jagdish_udhyog",
+      "_id": {
+        "$oid": "64feef5978ca868e49b5adb6"
+      }
+    },
+    {
+      "importer": "JANKI STAINLESS INDIA PVT LTD",
+      "importerURL": "janki_stainless_india_pvt_ltd",
+      "_id": {
+        "$oid": "64feef5978ca868e49b5adb7"
+      }
+    },
+    {
+      "importer": "KANUNGO STEEL (INDIA)",
+      "importerURL": "kanungo_steel_india",
+      "_id": {
+        "$oid": "64feef5978ca868e49b5adb8"
+      }
+    },
+    {
+      "importer": "KAYROS ENERGY PRIVATE LIMITED",
+      "importerURL": "kayros_energy_private_limited",
+      "_id": {
+        "$oid": "64feef5978ca868e49b5adb9"
+      }
+    },
+    {
+      "importer": "KOTHARI METALS LTD.",
+      "importerURL": "kothari_metals_ltd",
+      "_id": {
+        "$oid": "64feef5978ca868e49b5adba"
+      }
+    },
+    {
+      "importer": "KRYPTON METALS &  ALLOYS",
+      "importerURL": "krypton_metals_&_alloys",
+      "_id": {
+        "$oid": "64feef5978ca868e49b5adbb"
+      }
+    },
+    {
+      "importer": "KUNDAN PESTICHEM PVT LTD",
+      "importerURL": "kundan_pestichem_pvt_ltd",
+      "_id": {
+        "$oid": "64feef5978ca868e49b5adbc"
+      }
+    },
+    {
+      "importer": "LAXCON STEELS LIMITED - IMPORT",
+      "importerURL": "laxcon_steels_limited_import",
+      "_id": {
+        "$oid": "64feef5978ca868e49b5adbd"
+      }
+    },
+    {
+      "importer": "LN INDUSTRIES",
+      "importerURL": "ln_industries",
+      "_id": {
+        "$oid": "64feef5978ca868e49b5adbe"
+      }
+    },
+    {
+      "importer": "MAHALAXMI TEXCHEM PRIVATE LIMITED",
+      "importerURL": "mahalaxmi_texchem_private_limited",
+      "_id": {
+        "$oid": "64feef5978ca868e49b5adbf"
+      }
+    },
+    {
+      "importer": "PREETI METAL CORPORATION",
+      "importerURL": "preeti_metal_corporation",
+      "_id": {
+        "$oid": "64feef5978ca868e49b5adc0"
+      }
+    },
+    {
+      "importer": "R K P TRADING COMPANY PRIVATE LIMITED",
+      "importerURL": "r_k_p_trading_company_private_limited",
+      "_id": {
+        "$oid": "64feef5978ca868e49b5adc1"
+      }
+    },
+    {
+      "importer": "RAJESHWAR RECYCLING CO.",
+      "importerURL": "rajeshwar_recycling_co",
+      "_id": {
+        "$oid": "64feef5978ca868e49b5adc2"
+      }
+    },
+    {
+      "importer": "SHREE HANS ALLOYS LIMITED",
+      "importerURL": "shree_hans_alloys_limited",
+      "_id": {
+        "$oid": "64feef5978ca868e49b5adc3"
+      }
+    },
+    {
+      "importer": "SHREE YASH STAINLESS P. LTD.",
+      "importerURL": "shree_yash_stainless_p_ltd",
+      "_id": {
+        "$oid": "64feef5978ca868e49b5adc4"
+      }
+    },
+    {
+      "importer": "SUPREME METAL EXIM",
+      "importerURL": "supreme_metal_exim",
+      "_id": {
+        "$oid": "64feef5978ca868e49b5adc5"
+      }
+    },
+    {
+      "importer": "ALLIED REFRACTORY PRODUCTS INDIA PVT. LTD.",
+      "importerURL": "allied_refractory_products_india_pvt_ltd",
+      "_id": {
+        "$oid": "64fef09678ca868e49b91ac9"
+      }
+    },
+    {
+      "importer": "ALUZONE",
+      "importerURL": "aluzone",
+      "_id": {
+        "$oid": "64fef09678ca868e49b91aca"
+      }
+    },
+    {
+      "importer": "AVOCAB INDIA PRIVATE LIMITED",
+      "importerURL": "avocab_india_private_limited",
+      "_id": {
+        "$oid": "64fef09678ca868e49b91acb"
+      }
+    }
+  ],
+  "__v": 2,
+  "otp": null
+},
+{
+  "_id": {
+    "$oid": "64fee50578ca868e499a5424"
+  },
+  "username": "PRAVEENA",
+  "email": "praveena@surajforwarders.com",
+  "password": "$2b$10$yquvGbbpPZaujtNHdtX7u.NGi9dDSRmnigmTiYCHs.BfVfNW/DBgy",
+  "role": "Assistant Manager",
+  "importers": [
+    {
+      "importer": "ARYAN STAINLESS INTERNATIONAL PRIVATE LIMITED",
+      "importerURL": "aryan_stainless_international_private_limited",
+      "_id": {
+        "$oid": "64fef18778ca868e49bb9485"
+      }
+    },
+    {
+      "importer": "ARYAN STAINLESS PRIVATE LIMITED",
+      "importerURL": "aryan_stainless_private_limited",
+      "_id": {
+        "$oid": "64fef18778ca868e49bb9486"
+      }
+    },
+    {
+      "importer": "BAHETI RECYCLING INDUSTRIES LIMITED",
+      "importerURL": "baheti_recycling_industries_limited",
+      "_id": {
+        "$oid": "64fef18778ca868e49bb9487"
+      }
+    },
+    {
+      "importer": "BAHETI METAL & FERRO ALLOYS LTD.",
+      "importerURL": "baheti_metal_&_ferro_alloys_ltd",
+      "_id": {
+        "$oid": "64fef18778ca868e49bb9488"
+      }
+    },
+    {
+      "importer": "CITIZEN METALLOYS LIMITED.",
+      "importerURL": "citizen_metalloys_limited",
+      "_id": {
+        "$oid": "64fef18778ca868e49bb9489"
+      }
+    },
+    {
+      "importer": "DHANLAXMI META IMPEX LLP",
+      "importerURL": "dhanlaxmi_meta_impex_llp",
+      "_id": {
+        "$oid": "64fef18778ca868e49bb948a"
+      }
+    },
+    {
+      "importer": "EXEMPLAR ALLOYS LLP",
+      "importerURL": "exemplar_alloys_llp",
+      "_id": {
+        "$oid": "64fef18778ca868e49bb948b"
+      }
+    },
+    {
+      "importer": "FAIR DEAL RECYCLERS",
+      "importerURL": "fair_deal_recyclers",
+      "_id": {
+        "$oid": "64fef18778ca868e49bb948c"
+      }
+    },
+    {
+      "importer": "GUJARAT VICTORY FORGINGS PRIVATE LIMITED",
+      "importerURL": "gujarat_victory_forgings_private_limited",
+      "_id": {
+        "$oid": "64fef18778ca868e49bb948d"
+      }
+    },
+    {
+      "importer": "JINDAL WORLDWIDE LTD",
+      "importerURL": "jindal_worldwide_ltd",
+      "_id": {
+        "$oid": "64fef18778ca868e49bb948e"
+      }
+    },
+    {
+      "importer": "MORESCO HM&LUB INDIA PRIVATE LIMITED",
+      "importerURL": "moresco_hm&lub_india_private_limited",
+      "_id": {
+        "$oid": "64fef18778ca868e49bb948f"
+      }
+    },
+    {
+      "importer": "NORTH STAR METAL RECYCLERS",
+      "importerURL": "north_star_metal_recyclers",
+      "_id": {
+        "$oid": "64fef18778ca868e49bb9490"
+      }
+    },
+    {
+      "importer": "PRAYAN METALS",
+      "importerURL": "prayan_metals",
+      "_id": {
+        "$oid": "64fef18778ca868e49bb9491"
+      }
+    },
+    {
+      "importer": "S. G. METALS",
+      "importerURL": "s_g_metals",
+      "_id": {
+        "$oid": "64fef18778ca868e49bb9492"
+      }
+    },
+    {
+      "importer": "SAKAR INDUSTRIES PVT LIMITED",
+      "importerURL": "sakar_industries_pvt_limited",
+      "_id": {
+        "$oid": "64fef18778ca868e49bb9493"
+      }
+    },
+    {
+      "importer": "SAL CORPORATION PRIVATE LIMITED",
+      "importerURL": "sal_corporation_private_limited",
+      "_id": {
+        "$oid": "64fef18778ca868e49bb9494"
+      }
+    },
+    {
+      "importer": "SANRHEA TECHNICAL TEXTILES LTD",
+      "importerURL": "sanrhea_technical_textiles_ltd",
+      "_id": {
+        "$oid": "64fef18778ca868e49bb9495"
+      }
+    },
+    {
+      "importer": "SHAH ALLOYS LIMITED",
+      "importerURL": "shah_alloys_limited",
+      "_id": {
+        "$oid": "64fef18778ca868e49bb9496"
+      }
+    },
+    {
+      "importer": "SHANKHESHWAR STEEL",
+      "importerURL": "shankheshwar_steel",
+      "_id": {
+        "$oid": "64fef18778ca868e49bb9497"
+      }
+    },
+    {
+      "importer": "SHREE HANUMAN METAL COMPANY",
+      "importerURL": "shree_hanuman_metal_company",
+      "_id": {
+        "$oid": "64fef18778ca868e49bb9498"
+      }
+    },
+    {
+      "importer": "SHREE SHYAMPRIYA ALLOYS PRIVATE LIMITED",
+      "importerURL": "shree_shyampriya_alloys_private_limited",
+      "_id": {
+        "$oid": "64fef18778ca868e49bb9499"
+      }
+    },
+    {
+      "importer": "SHREE SHYAMSUNDER ALLOYS PVT. LTD.",
+      "importerURL": "shree_shyamsunder_alloys_pvt_ltd",
+      "_id": {
+        "$oid": "64fef18778ca868e49bb949a"
+      }
+    },
+    {
+      "importer": "SHREE VIRATRA STEEL",
+      "importerURL": "shree_viratra_steel",
+      "_id": {
+        "$oid": "64fef18778ca868e49bb949b"
+      }
+    },
+    {
+      "importer": "SIDDHI WEAVES PRIVATE LIMITED",
+      "importerURL": "siddhi_weaves_private_limited",
+      "_id": {
+        "$oid": "64fef18778ca868e49bb949c"
+      }
+    },
+    {
+      "importer": "SINGHAL SHEETS & FOILS PRIVATE LIMITED",
+      "importerURL": "singhal_sheets_&_foils_private_limited",
+      "_id": {
+        "$oid": "64fef18778ca868e49bb949d"
+      }
+    },
+    {
+      "importer": "SUBHASH METAL INDUSTRIES",
+      "importerURL": "subhash_metal_industries",
+      "_id": {
+        "$oid": "64fef18778ca868e49bb949e"
+      }
+    },
+    {
+      "importer": "TATA INTERNATIONAL LIMITED",
+      "importerURL": "tata_international_limited",
+      "_id": {
+        "$oid": "64fef18778ca868e49bb949f"
+      }
+    },
+    {
+      "importer": "UNIVERSAL TRADERS",
+      "importerURL": "universal_traders",
+      "_id": {
+        "$oid": "64fef18778ca868e49bb94a0"
+      }
+    },
+    {
+      "importer": "VIBRANT WORLDWIDE PRIVATE LIMITED",
+      "importerURL": "vibrant_worldwide_private_limited",
+      "_id": {
+        "$oid": "64fef18778ca868e49bb94a1"
+      }
+    },
+    {
+      "importer": "VINAYAK COIL CRAFT PVT LTD",
+      "importerURL": "vinayak_coil_craft_pvt_ltd",
+      "_id": {
+        "$oid": "64fef18778ca868e49bb94a2"
+      }
+    },
+    {
+      "importer": "VINITECH METAL PRIVATE LIMITED",
+      "importerURL": "vinitech_metal_private_limited",
+      "_id": {
+        "$oid": "64fef18778ca868e49bb94a3"
+      }
+    }
+  ],
+  "__v": 1,
+  "otp": null
+},
+{
+  "_id": {
+    "$oid": "64fee52d78ca868e499abe27"
+  },
+  "username": "Sreekumar",
+  "email": "sreekumar@surajforwarders.com",
+  "password": "$2b$10$eobn4lbWcjwb6PMWyW9L1uNS4wHyUZVuYwOtlNgub063dmWh/lDVC",
+  "role": "Senior Manager",
+  "importers": [],
+  "__v": 0,
+  "otp": null
+},
+{
+  "_id": {
+    "$oid": "64fee56478ca868e499b49bc"
+  },
+  "username": "DEEPU",
+  "email": "deepu@surajforwarders.com",
+  "password": "$2b$10$cR8C04cZUGw5P3VksI6Kyuwqf1BBNQ7nq3zZT4n6tovZ7gH9UscT.",
+  "role": "Assistant Manager",
+  "importers": [
+    {
+      "importer": "AIA ENGINEERING LTD",
+      "importerURL": "aia_engineering_ltd",
+      "_id": {
+        "$oid": "64fefa4a78ca868e49d2e5e8"
+      }
+    },
+    {
+      "importer": "GHANSHYAM METAL UDYOG.",
+      "importerURL": "ghanshyam_metal_udyog",
+      "_id": {
+        "$oid": "64fefa4a78ca868e49d2e5e9"
+      }
+    },
+    {
+      "importer": "B.R.METAL & ALLOYS (GUJ) PVT. LTD",
+      "importerURL": "brmetal_&_alloys_guj_pvt_ltd",
+      "_id": {
+        "$oid": "64fefa4a78ca868e49d2e5ea"
+      }
+    }
+  ],
+  "__v": 1,
+  "otp": null
+},
+{
+  "_id": {
+    "$oid": "64fee5b878ca868e499c37bd"
+  },
+  "username": "Mayur",
+  "email": "mayur@surajforwarders.com",
+  "password": "$2b$10$hyzcBskWAO..HF/FP4.XMu/RGR/T7MQt9E95hPGC8ZALrqpIqj.Au",
+  "role": "Assistant Manager",
+  "importers": [
+    {
+      "importer": "CEDAR DECOR PVT.LTD.",
+      "importerURL": "cedar_decor_pvtltd",
+      "_id": {
+        "$oid": "64fef6e278ca868e49c9d8a4"
+      }
+    },
+    {
+      "importer": "RAJPUTANA STAINLESS LTD",
+      "importerURL": "rajputana_stainless_ltd",
+      "_id": {
+        "$oid": "64fef6e278ca868e49c9d8a5"
+      }
+    },
+    {
+      "importer": "ELIXIR PHARMA CHEM PRIVATE LIMITED",
+      "importerURL": "elixir_pharma_chem_private_limited",
+      "_id": {
+        "$oid": "64fef6e278ca868e49c9d8a6"
+      }
+    },
+    {
+      "importer": "PADMAVATI EXPO CHEM",
+      "importerURL": "padmavati_expo_chem",
+      "_id": {
+        "$oid": "64fef6e278ca868e49c9d8a7"
+      }
+    },
+    {
+      "importer": "PRASAD INTERNATIONAL PRIVATE LTD",
+      "importerURL": "prasad_international_private_ltd",
+      "_id": {
+        "$oid": "64fef6e278ca868e49c9d8a8"
+      }
+    },
+    {
+      "importer": "RAMDEV METAL INDUSTRIES",
+      "importerURL": "ramdev_metal_industries",
+      "_id": {
+        "$oid": "64fef6e278ca868e49c9d8a9"
+      }
+    },
+    {
+      "importer": "M.I.ALLOYS PVT. LTD.",
+      "importerURL": "mialloys_pvt_ltd",
+      "_id": {
+        "$oid": "64fef6e278ca868e49c9d8aa"
+      }
+    },
+    {
+      "importer": "STERLING TUBES",
+      "importerURL": "sterling_tubes",
+      "_id": {
+        "$oid": "64fef6e278ca868e49c9d8ab"
+      }
+    },
+    {
+      "importer": "KOIL HARDWARE PVT LTD.",
+      "importerURL": "koil_hardware_pvt_ltd",
+      "_id": {
+        "$oid": "64fef6e278ca868e49c9d8ac"
+      }
+    },
+    {
+      "importer": "JAI GOGA EXTRUSION LLP",
+      "importerURL": "jai_goga_extrusion_llp",
+      "_id": {
+        "$oid": "64fef6e278ca868e49c9d8ad"
+      }
+    },
+    {
+      "importer": "NITIUM PIPING LLP",
+      "importerURL": "nitium_piping_llp",
+      "_id": {
+        "$oid": "64fef6e278ca868e49c9d8ae"
+      }
+    },
+    {
+      "importer": "N STEELS PRIVATE LIMITED",
+      "importerURL": "n_steels_private_limited",
+      "_id": {
+        "$oid": "64fef6e278ca868e49c9d8af"
+      }
+    },
+    {
+      "importer": "PARIKH ENTERPRISES PRIVATE LIMITED",
+      "importerURL": "parikh_enterprises_private_limited",
+      "_id": {
+        "$oid": "64fef6e278ca868e49c9d8b0"
+      }
+    },
+    {
+      "importer": "SPLENDID HYDRAULICS INDIA",
+      "importerURL": "splendid_hydraulics_india",
+      "_id": {
+        "$oid": "64fef6e278ca868e49c9d8b1"
+      }
+    },
+    {
+      "importer": "STERILIZATION SOLUTIONS",
+      "importerURL": "sterilization_solutions",
+      "_id": {
+        "$oid": "64fef6e278ca868e49c9d8b2"
+      }
+    },
+    {
+      "importer": "G.N.PLASTIC",
+      "importerURL": "gnplastic",
+      "_id": {
+        "$oid": "64fef84878ca868e49cd98a9"
+      }
+    },
+    {
+      "importer": "M K ENTERPRISE",
+      "importerURL": "m_k_enterprise",
+      "_id": {
+        "$oid": "64fef84878ca868e49cd98aa"
+      }
+    },
+    {
+      "importer": "MELTING SOLUTION",
+      "importerURL": "melting_solution",
+      "_id": {
+        "$oid": "64fef84878ca868e49cd98ab"
+      }
+    },
+    {
+      "importer": "PRIORITY PROFILES PRIVATE LIMITED",
+      "importerURL": "priority_profiles_private_limited",
+      "_id": {
+        "$oid": "64fef84878ca868e49cd98ac"
+      }
+    },
+    {
+      "importer": "GURU RAJENDRA METALLOYS INDIA PVT. LTD.,",
+      "importerURL": "guru_rajendra_metalloys_india_pvt_ltd",
+      "_id": {
+        "$oid": "64fef92578ca868e49cfde74"
+      }
+    },
+    {
+      "importer": "G.R.METALLOYS PRIVATE LIMITED",
+      "importerURL": "grmetalloys_private_limited",
+      "_id": {
+        "$oid": "64fef92578ca868e49cfde75"
+      }
+    },
+    {
+      "importer": "GUJARAT CORPORATIONS",
+      "importerURL": "gujarat_corporations",
+      "_id": {
+        "$oid": "64fef92578ca868e49cfde76"
+      }
+    },
+    {
+      "importer": "HETVI ENTERPRISE",
+      "importerURL": "hetvi_enterprise",
+      "_id": {
+        "$oid": "64fef92578ca868e49cfde77"
+      }
+    },
+    {
+      "importer": "INANI METAL & ALLOYS PVT. LTD.",
+      "importerURL": "inani_metal_&_alloys_pvt_ltd",
+      "_id": {
+        "$oid": "64fef92578ca868e49cfde78"
+      }
+    },
+    {
+      "importer": "J M STEEL & ALLOYS",
+      "importerURL": "j_m_steel_&_alloys",
+      "_id": {
+        "$oid": "64fef92578ca868e49cfde79"
+      }
+    },
+    {
+      "importer": "KAMAL TEXTILE INDUSTRIES",
+      "importerURL": "kamal_textile_industries",
+      "_id": {
+        "$oid": "64fef92578ca868e49cfde7a"
+      }
+    },
+    {
+      "importer": "MANISH METAL",
+      "importerURL": "manish_metal",
+      "_id": {
+        "$oid": "64fef92578ca868e49cfde7b"
+      }
+    },
+    {
+      "importer": "NIKHIL ENTERPRISE",
+      "importerURL": "nikhil_enterprise",
+      "_id": {
+        "$oid": "64fef92578ca868e49cfde7c"
+      }
+    },
+    {
+      "importer": "RIVA IMPEX AND ALLOYS INDUSTRIES",
+      "importerURL": "riva_impex_and_alloys_industries",
+      "_id": {
+        "$oid": "64fef92578ca868e49cfde7d"
+      }
+    },
+    {
+      "importer": "S.SAGAR TRADING COMPANY",
+      "importerURL": "ssagar_trading_company",
+      "_id": {
+        "$oid": "64fef92578ca868e49cfde7e"
+      }
+    },
+    {
+      "importer": "SANSKAAR ASSOCIATES",
+      "importerURL": "sanskaar_associates",
+      "_id": {
+        "$oid": "64fef92578ca868e49cfde7f"
+      }
+    },
+    {
+      "importer": "SHIVHARI WEAVES (OPC) PRIVATE LIMITED",
+      "importerURL": "shivhari_weaves_opc_private_limited",
+      "_id": {
+        "$oid": "64fef92578ca868e49cfde80"
+      }
+    },
+    {
+      "importer": "SPECTRUM LASER INC",
+      "importerURL": "spectrum_laser_inc",
+      "_id": {
+        "$oid": "64fef92578ca868e49cfde81"
+      }
+    }
+  ],
+  "__v": 3,
+  "otp": null
+},
+{
+  "_id": {
+    "$oid": "64fee84978ca868e49a2f5ba"
+  },
+  "username": "BS RATHOD",
+  "email": "rathodbs@surajforwarders.com",
+  "password": "$2b$10$cGzmmU/F42PlR2T0i30Cz.YMqy0H.o5/ya2CK7MVkzJN1BR4bDSDK",
+  "role": "Executive",
+  "importers": [
+    {
+      "importer": "ARFIN INDIA LIMITED",
+      "importerURL": "arfin_india_limited",
+      "_id": {
+        "$oid": "64fef99778ca868e49d1017f"
+      }
+    },
+    {
+      "importer": "ELITE MULTI METALS LLP",
+      "importerURL": "elite_multi_metals_llp",
+      "_id": {
+        "$oid": "64fef99778ca868e49d10180"
+      }
+    },
+    {
+      "importer": "MAA ALLUMINIUM (INDIA) PRIVATE LIMITED",
+      "importerURL": "maa_alluminium_india_private_limited",
+      "_id": {
+        "$oid": "64fef99778ca868e49d10181"
+      }
+    },
+    {
+      "importer": "NANDESHWARI STEEL LIMITED,",
+      "importerURL": "nandeshwari_steel_limited",
+      "_id": {
+        "$oid": "64fef99778ca868e49d10182"
+      }
+    },
+    {
+      "importer": "MANGALAM ALLOYS LIMITED",
+      "importerURL": "mangalam_alloys_limited",
+      "_id": {
+        "$oid": "64fef99778ca868e49d10183"
+      }
+    },
+    {
+      "importer": "M P METALS & ALLOYS",
+      "importerURL": "m_p_metals_&_alloys",
+      "_id": {
+        "$oid": "64fef99778ca868e49d10184"
+      }
+    },
+    {
+      "importer": "RATNESH METAL INDUSTRIES PVT. LTD",
+      "importerURL": "ratnesh_metal_industries_pvt_ltd",
+      "_id": {
+        "$oid": "64fef99778ca868e49d10185"
+      }
+    },
+    {
+      "importer": "TALCO EXTRUSION LLP",
+      "importerURL": "talco_extrusion_llp",
+      "_id": {
+        "$oid": "64fef99778ca868e49d10186"
+      }
+    },
+    {
+      "importer": "TIRUPATI COAL COMPANY",
+      "importerURL": "tirupati_coal_company",
+      "_id": {
+        "$oid": "64fef99778ca868e49d10187"
+      }
+    },
+    {
+      "importer": "MAA PANEL [INDIA] PRIVATE LIMITED",
+      "importerURL": "maa_panel_india_private_limited",
+      "_id": {
+        "$oid": "64fefaf478ca868e49d4af4a"
+      }
+    }
+  ],
+  "__v": 2,
+  "otp": null
+},
+{
+  "_id": {
+    "$oid": "64fee88b78ca868e49a3aef1"
+  },
+  "username": "RAVI",
+  "email": "ravipatel@surajforwarders.com",
+  "password": "$2b$10$TSK/Jou/z.f3vkIeaVNnnOGnLbcbH1Jkaj7gvcblv/xv7LV4yOLJq",
+  "role": "Executive",
+  "importers": [
+    {
+      "importer": "SHUBHAM ENTERPRISE.",
+      "importerURL": "shubham_enterprise",
+      "_id": {
+        "$oid": "64fef5de78ca868e49c728f2"
+      }
+    },
+    {
+      "importer": "PARAG METAL",
+      "importerURL": "parag_metal",
+      "_id": {
+        "$oid": "64fef5de78ca868e49c728f3"
+      }
+    },
+    {
+      "importer": "PASHKA STAINLESS LLP",
+      "importerURL": "pashka_stainless_llp",
+      "_id": {
+        "$oid": "64fef5de78ca868e49c728f4"
+      }
+    },
+    {
+      "importer": "METALLUM SMELTERS",
+      "importerURL": "metallum_smelters",
+      "_id": {
+        "$oid": "64fef5de78ca868e49c728f5"
+      }
+    },
+    {
+      "importer": "RATNAVEER PRECISION ENGINEERING LIMITED",
+      "importerURL": "ratnaveer_precision_engineering_limited",
+      "_id": {
+        "$oid": "64fef5de78ca868e49c728f6"
+      }
+    },
+    {
+      "importer": "BHAVYA MACHINE TOOLS",
+      "importerURL": "bhavya_machine_tools",
+      "_id": {
+        "$oid": "64fef5de78ca868e49c728f7"
+      }
+    },
+    {
+      "importer": "BHAVYA MACHINE TOOLS LLP",
+      "importerURL": "bhavya_machine_tools_llp",
+      "_id": {
+        "$oid": "64fef5de78ca868e49c728f8"
+      }
+    },
+    {
+      "importer": "DEVSARAS STAINLESS PVT LTD",
+      "importerURL": "devsaras_stainless_pvt_ltd",
+      "_id": {
+        "$oid": "64fef5de78ca868e49c728f9"
+      }
+    },
+    {
+      "importer": "K B UDHYOG LLP",
+      "importerURL": "k_b_udhyog_llp",
+      "_id": {
+        "$oid": "64fef7c078ca868e49cc268d"
+      }
+    },
+    {
+      "importer": "YASH MACHINE TOOLS",
+      "importerURL": "yash_machine_tools",
+      "_id": {
+        "$oid": "64fefaba78ca868e49d410d6"
+      }
+    },
+    {
+      "importer": "MAHESH METALLOYS PVT. LTD.",
+      "importerURL": "mahesh_metalloys_pvt_ltd",
+      "_id": {
+        "$oid": "64fefb2878ca868e49d533ca"
+      }
+    },
+    {
+      "importer": "METHAL IMPEX AND ALLOY INDUSTRIES",
+      "importerURL": "methal_impex_and_alloy_industries",
+      "_id": {
+        "$oid": "64fefb2878ca868e49d533cb"
+      }
+    },
+    {
+      "importer": "ORIENT AROMA CHEMICAL INDUSTRIES PVT. LTD.",
+      "importerURL": "orient_aroma_chemical_industries_pvt_ltd",
+      "_id": {
+        "$oid": "64fefb2878ca868e49d533cc"
+      }
+    }
+  ],
+  "__v": 4,
+  "otp": null
+},
+{
+  "_id": {
+    "$oid": "65033610fea0660247a2c59b"
+  },
+  "username": "Sameer",
+  "email": "sameery.020@gmail.com",
+  "password": "$2b$10$vBRGefbF4BWPJ/Mu2xN69uActtb3.gtxDLlKrDIxz0YeB1wNwhviG",
+  "role": "Executive",
+  "importers": [
+    {
+      "importer": "ADARSH STAINLESS PRIVATE LIMITED",
+      "importerURL": "adarsh_stainless_private_limited",
+      "_id": {
+        "$oid": "65049fa38e1eeee5a907a182"
+      }
+    },
+    {
+      "importer": "AKSHAY IMPEX",
+      "importerURL": "akshay_impex",
+      "_id": {
+        "$oid": "65049fca8e1eeee5a9080df1"
+      }
+    },
+    {
+      "importer": "ASIA VIDHYUT",
+      "importerURL": "asia_vidhyut",
+      "_id": {
+        "$oid": "65049fca8e1eeee5a9080df2"
+      }
+    },
+    {
+      "importer": "BHUMI ELECTRO INDIA PRIVATE LIMITED",
+      "importerURL": "bhumi_electro_india_private_limited",
+      "_id": {
+        "$oid": "65049fca8e1eeee5a9080df3"
+      }
+    }
+  ],
+  "__v": 15,
+  "changePasswordOtp": null,
+  "otp": null
+}]

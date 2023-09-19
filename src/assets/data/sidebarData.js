@@ -4,7 +4,7 @@ import TableViewIcon from "@mui/icons-material/TableView";
 import SpaceDashboardIcon from "@mui/icons-material/SpaceDashboard";
 import FeedbackIcon from "@mui/icons-material/Feedback";
 
-const importer = localStorage.getItem("importer");
+const importer = localStorage.getItem("importerName");
 
 export function sidebarData(role, importerURL) {
   const sidebarData = [
@@ -22,7 +22,8 @@ export function sidebarData(role, importerURL) {
       url:
         role !== "Director" ||
         role !== "General Manager" ||
-        role !== "Senior Manager"
+        role !== "Senior Manager" ||
+        role !== "Assistant Manager"
           ? `${importerURL}/jobs/pending`
           : `${importer}/jobs/pending`,
     },

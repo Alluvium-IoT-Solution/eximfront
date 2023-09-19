@@ -51,6 +51,21 @@ const ExecutiveDashboard = () => {
               setImporterName(newValue);
               setSelectedImporter(newValue);
               localStorage.setItem("importerName", newValue);
+              localStorage.setItem(
+                "importer",
+                newValue
+                  .toLowerCase()
+                  .replace(/ /g, "_")
+                  .replace(/\./g, "")
+                  .replace(/\//g, "_")
+                  .replace(/-/g, "")
+                  .replace(/_+/g, "_")
+                  .replace(/\(/g, "")
+                  .replace(/\)/g, "")
+                  .replace(/\[/g, "")
+                  .replace(/\]/g, "")
+                  .replace(/,/g, "")
+              );
             }}
             value={selectedImporter}
             style={{ marginBottom: "15px" }}
@@ -58,22 +73,11 @@ const ExecutiveDashboard = () => {
         </div>
 
         <JobsOverview selectedYear={selectedYear} />
-
-        <Container fluid className="dashboard-container">
-          <Row>
-            {user.role !== "Executive" && (
-              <ImporterWiseDetails selectedYear={selectedYear} />
-            )}
-            <Col xs={6} className="dashboard-col"></Col>
-          </Row>
-        </Container>
       </Container>
-
       <RegisterModal
         openRegisterModal={openRegisterModal}
         handleCloseRegisterModal={handleCloseRegisterModal}
       />
-
       <AssignJobsModal
         openAssignJobsModal={openAssignJobsModal}
         handleCloseAssignJobsModal={handleCloseAssignJobsModal}

@@ -103,7 +103,6 @@ function useJobColumns(detailedStatus) {
           ? false
           : true,
       renderCell: (cell) => {
-        // console.log(cell.row.eta);
         return cell.row.eta === "undefined.undefined.d." ||
           cell.row.eta === undefined
           ? ""
@@ -119,7 +118,6 @@ function useJobColumns(detailedStatus) {
       align: "center",
       hide: detailedStatus === "Discharged" ? false : true,
       renderCell: (cell) => {
-        // console.log(cell.row.eta);
         return cell.row.eta === "undefined.undefined.d." ||
           cell.row.eta === undefined
           ? ""
@@ -136,7 +134,6 @@ function useJobColumns(detailedStatus) {
       hide: detailedStatus !== "BE Noted, Clearance Pending" ? true : false,
       renderCell: (cell) => {
         return cell.row.container_nos.map((container, id) => {
-          console.log(container);
           return (
             <React.Fragment key={id}>
               {container.arrival_date}
