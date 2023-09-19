@@ -32,7 +32,7 @@ const ExecutiveDashboard = () => {
     assignedImporters.length !== 0
       ? assignedImporters.map((importer) => importer.importer)
       : [];
-  console.log(importerList);
+
   return (
     <>
       <Container fluid className="dashboard-container">

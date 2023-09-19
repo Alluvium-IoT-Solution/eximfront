@@ -33,8 +33,7 @@ export const convertToExcel = async (
       .map((container) => container.size)
       .join(",\n");
 
-    const inv_value = (item.cif_amount / item.ex_rate).toFixed(2);
-
+    const inv_value = (item.cif_amount / parseInt(item.ex_rate)).toFixed(2);
     const invoice_value_and_unit_price = `${item.inv_currency} ${inv_value} | ${item.unit_price}`;
 
     const valueMap = {

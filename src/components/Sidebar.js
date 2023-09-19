@@ -145,6 +145,7 @@ function Sidebar() {
           localStorage.removeItem("selectedImporter");
           localStorage.removeItem("assignedImporters");
           localStorage.removeItem("importerName");
+          localStorage.removeItem("importer");
         }}
       >
         <div className="sidebar-link">
