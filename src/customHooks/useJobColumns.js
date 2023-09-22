@@ -16,7 +16,7 @@ function useJobColumns(detailedStatus) {
       field: "job_no",
       sortable: false,
       headerName: "Job Number",
-      width: 150,
+      width: 100,
       align: "center",
     },
 
@@ -92,8 +92,8 @@ function useJobColumns(detailedStatus) {
     {
       field: "eta",
       sortable: false,
-      headerName: "Estimated Time of Arrival",
-      width: 250,
+      headerName: "ETA",
+      width: 150,
       align: "center",
       hide:
         detailedStatus === "Estimated Time of Arrival" ||
@@ -263,8 +263,7 @@ function useJobColumns(detailedStatus) {
       field: "remarks",
       sortable: false,
       headerName: "Remarks",
-      width: "300",
-      hide: true,
+      width: "250",
     },
 
     {

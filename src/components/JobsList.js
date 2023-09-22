@@ -41,6 +41,20 @@ function JobsList() {
     // eslint-disable-next-line
   }, [params.importer]);
 
+  const handleReportDownload = async () => {
+    const res = await axios.get(
+      `http://localhost:9002/api/downloadReport/${selectedYear}/${params.importer}/${params.status}`
+    );
+
+    convertToExcel(
+      res.data,
+      importerName,
+      params.status,
+      detailedStatus,
+      headers
+    );
+  };
+
   return (
     <>
       <div className="jobs-list-header">
@@ -62,15 +76,7 @@ function JobsList() {
         </select>
 
         <button
-          onClick={() =>
-            convertToExcel(
-              rows,
-              importerName,
-              params.status,
-              detailedStatus,
-              headers
-            )
-          }
+          onClick={() => handleReportDownload()}
           style={{ cursor: "pointer" }}
           aria-label="export-btn"
         >

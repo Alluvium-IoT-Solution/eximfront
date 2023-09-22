@@ -54,6 +54,33 @@ function useFetchJobDetails(params, checked, selectedYear, setSelectedRegNo) {
     },
 
     onSubmit: async (values) => {
+      const a = {
+        eta: values.eta,
+        checked,
+        free_time: values.free_time,
+        status: values.status,
+        detailed_status: values.detailed_status,
+        container_nos: values.container_nos,
+        arrival_date: values.arrival_date,
+        do_validity: values.do_validity,
+        checklist: values.checklist,
+        remarks: values.remarks,
+        description: values.description,
+        sims_reg_no: values.sims_reg_no,
+        pims_reg_no: values.pims_reg_no,
+        nfmims_reg_no: values.nfmims_reg_no,
+        sims_date: values.sims_date,
+        pims_date: values.pims_date,
+        nfmims_date: values.nfmims_date,
+        delivery_date: values.delivery_date,
+        discharge_date: values.discharge_date,
+        assessment_date: values.assessment_date,
+        examination_date: values.examination_date,
+        duty_paid_date: values.duty_paid_date,
+        out_of_charge_date: values.out_of_charge_date,
+      };
+      console.log(a);
+
       const res = await axios.put(
         `${updateJobAPI}/updatejob/${selectedYear}/${params.jobNo}`,
         {
