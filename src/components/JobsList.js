@@ -25,7 +25,7 @@ function JobsList() {
   const { rows, total, pageState, setPageState, setFilterText } =
     useFetchJobList(detailedStatus, selectedYear);
   const params = useParams();
-  const { reportFieldsAPI } = apiRoutes();
+  const { reportFieldsAPI, downloadReportAPI } = apiRoutes();
 
   // // Modal
   // const [openModal, setOpenModal] = React.useState(false);
@@ -43,7 +43,7 @@ function JobsList() {
 
   const handleReportDownload = async () => {
     const res = await axios.get(
-      `http://localhost:9002/api/downloadReport/${selectedYear}/${params.importer}/${params.status}`
+      `${downloadReportAPI}/${selectedYear}/${params.importer}/${params.status}`
     );
 
     convertToExcel(
