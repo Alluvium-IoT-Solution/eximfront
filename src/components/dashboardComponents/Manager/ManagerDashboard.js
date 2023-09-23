@@ -84,20 +84,16 @@ const ManagerDashboard = () => {
         <h4>Hello, {user.username}</h4>
 
         <JobsOverview selectedYear={selectedYear} />
-        <Container fluid className="dashboard-container">
-          <Row>
-            {user.role !== "Executive" && (
-              <ImporterWiseDetails selectedYear={selectedYear} />
-            )}
-            <Col
-              xs={6}
-              className="dashboard-col"
-              style={{ display: "flex !important" }}
-            >
-              <TrackTasks usernames={usernames} counts={counts} />
-            </Col>
-          </Row>
-        </Container>
+
+        <Row>
+          <Col className="dashboard-col">
+            <ImporterWiseDetails selectedYear={selectedYear} />
+          </Col>
+
+          <Col className="dashboard-col">
+            <TrackTasks usernames={usernames} counts={counts} />
+          </Col>
+        </Row>
       </Container>
       <RegisterModal
         openRegisterModal={openRegisterModal}

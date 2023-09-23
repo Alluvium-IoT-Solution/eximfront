@@ -3,7 +3,6 @@ import TextField from "@mui/material/TextField";
 import Autocomplete from "@mui/material/Autocomplete";
 import { apiRoutes } from "../../utils/apiRoutes";
 import axios from "axios";
-import { Col } from "react-bootstrap";
 import ReactApexChart from "react-apexcharts";
 
 function ImporterWiseDetails(props) {
@@ -122,29 +121,27 @@ function ImporterWiseDetails(props) {
   };
 
   return (
-    <Col xs={12} sm={6} className="dashboard-col">
-      <div className="dashboard-col-inner">
-        <Autocomplete
-          disablePortal
-          options={importerNames}
-          getOptionLabel={(option) => option}
-          value={selectedImporter}
-          onChange={handleImporterChange}
-          width="100%"
-          renderInput={(params) => (
-            <TextField {...params} label="Select importer" />
-          )}
-        />
+    <div className="dashboard-col-inner">
+      <Autocomplete
+        disablePortal
+        options={importerNames}
+        getOptionLabel={(option) => option}
+        value={selectedImporter}
+        onChange={handleImporterChange}
+        width="100%"
+        renderInput={(params) => (
+          <TextField {...params} label="Select importer" />
+        )}
+      />
 
-        <br />
-        <ReactApexChart
-          options={donutState.options}
-          series={donutState.series}
-          type="donut"
-          width={500}
-        />
-      </div>
-    </Col>
+      <br />
+      <ReactApexChart
+        options={donutState.options}
+        series={donutState.series}
+        type="donut"
+        width={500}
+      />
+    </div>
   );
 }
 
