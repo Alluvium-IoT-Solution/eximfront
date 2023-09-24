@@ -69,7 +69,12 @@ const ManagerDashboard = () => {
 
   useEffect(() => {
     async function getData() {
-      const res = await axios.get(`${getUsersWithJobsAPI}/${selectedYear}`);
+      const res = await axios.get(`${getUsersWithJobsAPI}/${selectedYear}`, {
+        headers: {
+          Authorization: `Bearer ${user.token}`,
+          "Content-Type": "application/json",
+        },
+      });
       setUsernames(res.data.map((item) => item.username));
       setCounts(res.data.map((item) => item.jobsCount));
     }

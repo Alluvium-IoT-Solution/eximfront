@@ -17,7 +17,13 @@ function useFetchJobDetails(params, checked, selectedYear, setSelectedRegNo) {
   useEffect(() => {
     async function getJobDetails() {
       const response = await axios.get(
-        `${getJobAPI}/job/${selectedYear}/${params.jobNo}`
+        `${getJobAPI}/job/${selectedYear}/${params.jobNo}`,
+        {
+          headers: {
+            Authorization: `Bearer ${user.token}`,
+            "Content-Type": "application/json",
+          },
+        }
       );
       setData(response.data);
     }
@@ -107,6 +113,12 @@ function useFetchJobDetails(params, checked, selectedYear, setSelectedRegNo) {
           examination_date: values.examination_date,
           duty_paid_date: values.duty_paid_date,
           out_of_charge_date: values.out_of_charge_date,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${user.token}`,
+            "Content-Type": "application/json",
+          },
         }
       );
       console.log(res);

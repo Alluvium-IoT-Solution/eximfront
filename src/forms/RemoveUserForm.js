@@ -27,7 +27,12 @@ const RemoveUserForm = () => {
     },
     validationSchema,
     onSubmit: async (values) => {
-      const res = await axios.delete(`${removeUserAPI}/${values.user}`);
+      const res = await axios.delete(`${removeUserAPI}/${values.user}`, {
+        headers: {
+          Authorization: `Bearer ${user.token}`,
+          "Content-Type": "application/json",
+        },
+      });
       if (res.status === 200) {
         alert("User removed succesfully");
         setToggle(!toggle);
@@ -37,7 +42,12 @@ const RemoveUserForm = () => {
 
   useEffect(() => {
     async function getUsers() {
-      const res = await axios(getUsersAPI);
+      const res = await axios(getUsersAPI, {
+        headers: {
+          Authorization: `Bearer ${user.token}`,
+          "Content-Type": "application/json",
+        },
+      });
       setUsers(res.data);
     }
 

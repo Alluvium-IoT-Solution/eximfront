@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useFormik } from "formik";
 import { TextField } from "@mui/material";
 import { validationSchema } from "../schema/RegisterSchema";
@@ -6,8 +6,10 @@ import axios from "axios";
 import { apiRoutes } from "../utils/apiRoutes";
 import { useNavigate } from "react-router-dom";
 import MenuItem from "@mui/material/MenuItem";
+import { UserContext } from "../Context/UserContext";
 
 const RegisterForm = (props) => {
+  const { user } = useContext(UserContext);
   const navigate = useNavigate();
   const { registerAPI } = apiRoutes();
 
@@ -21,7 +23,12 @@ const RegisterForm = (props) => {
 
     validationSchema: validationSchema,
     onSubmit: async (values) => {
-      const res = await axios.post(registerAPI, values);
+      const res = await axios.post(registerAPI, values, {
+        headers: {
+          Authorization: `Bearer ${user.token}`,
+          "Content-Type": "application/json",
+        },
+      });
       console.log(res);
       if (res.data.message === "User already registered") {
         alert(res.data.message);

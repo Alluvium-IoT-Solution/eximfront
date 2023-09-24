@@ -42,6 +42,7 @@ const LoginForm = (props) => {
 
     onSubmit: async (values) => {
       const res = await axios.post(loginAPI, values);
+
       if (res.data.message === "OTP didn't match") {
         alert(res.data.message);
       } else if (res.data.message === "Password didn't match") {

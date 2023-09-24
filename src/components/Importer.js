@@ -6,6 +6,7 @@ import "../styles/importer.scss";
 import axios from "axios";
 import { apiRoutes } from "../utils/apiRoutes";
 import { SelectedYearContext } from "../Context/SelectedYearContext";
+import { UserContext } from "../Context/UserContext";
 
 function Importer() {
   const [filterImporter, setFilterImporter] = useState("");
@@ -14,10 +15,18 @@ function Importer() {
   const navigate = useNavigate();
   const { importerListAPI } = apiRoutes();
   const { selectedYear } = useContext(SelectedYearContext);
+  const { user } = useContext(UserContext);
+  const token = user.token;
+  console.log(`${importerListAPI}/${selectedYear}`);
 
   useEffect(() => {
     async function getImporterList() {
-      const res = await axios.get(`${importerListAPI}/${selectedYear}`);
+      const res = await axios.get(`${importerListAPI}/${selectedYear}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
+        },
+      });
       setImporterData(res.data);
     }
     getImporterList();

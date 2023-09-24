@@ -21,7 +21,16 @@ const FeedbackForm = () => {
     onSubmit: async (values) => {
       alert("Thanks for your feedback");
       const data = { ...values, email };
-      const res = await axios.post(feedbackAPI, { data });
+      const res = await axios.post(
+        feedbackAPI,
+        { data },
+        {
+          headers: {
+            Authorization: `Bearer ${user.token}`,
+            "Content-Type": "application/json",
+          },
+        }
+      );
     },
   });
 

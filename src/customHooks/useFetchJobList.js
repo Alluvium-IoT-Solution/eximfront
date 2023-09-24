@@ -1,8 +1,9 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import { convertToTimestamp } from "../utils/convertToTimestamp";
 import { apiRoutes } from "../utils/apiRoutes";
+import { UserContext } from "../Context/UserContext";
 
 function useFetchJobList(detailedStatus, selectedYear) {
   const [rows, setRows] = useState([]);
@@ -14,6 +15,9 @@ function useFetchJobList(detailedStatus, selectedYear) {
     page: 1,
   });
   const [total, setTotal] = useState(0);
+  const { user } = useContext(UserContext);
+
+  const token = user.token;
 
   useEffect(() => {
     async function getData() {
@@ -21,7 +25,13 @@ function useFetchJobList(detailedStatus, selectedYear) {
       setPageState((old) => ({ ...old, isLoading: true }));
 
       const res = await axios(
-        `${getJobsListAPI}/${selectedYear}/${params.importer}/jobs/${params.status}/${pageState.page}/${filterText}`
+        `${getJobsListAPI}/${selectedYear}/${params.importer}/jobs/${params.status}/${pageState.page}/${filterText}`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "application/json",
+          },
+        }
       );
 
       setPageState((old) => ({

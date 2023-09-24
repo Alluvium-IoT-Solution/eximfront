@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Button } from "@mui/material";
 import { useFormik } from "formik";
 import { TextField } from "@mui/material";
@@ -12,6 +12,7 @@ import FormControl from "@mui/material/FormControl";
 import ListItemText from "@mui/material/ListItemText";
 import Select from "@mui/material/Select";
 import Checkbox from "@mui/material/Checkbox";
+import { UserContext } from "../Context/UserContext";
 
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
@@ -33,10 +34,16 @@ const AssignJobsForm = (props) => {
   const [importerData, setImporterData] = useState([]);
   const [assignedImporters, setAssignedImporters] = useState([]);
   const { assignJobsAPI, importerListToAssignJobs } = apiRoutes();
+  const { user } = useContext(UserContext);
 
   useEffect(() => {
     async function getImporterList() {
-      const res = await axios.get(importerListToAssignJobs);
+      const res = await axios.get(importerListToAssignJobs, {
+        headers: {
+          Authorization: `Bearer ${user.token}`,
+          "Content-Type": "application/json",
+        },
+      });
       setImporterData(res.data);
     }
 
@@ -73,7 +80,12 @@ const AssignJobsForm = (props) => {
         })),
       };
 
-      const res = await axios.post(assignJobsAPI, data);
+      const res = await axios.post(assignJobsAPI, data, {
+        headers: {
+          Authorization: `Bearer ${user.token}`,
+          "Content-Type": "application/json",
+        },
+      });
       if (res.status === 200) {
         alert("Jobs assigned successfully");
       }

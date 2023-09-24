@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import TextField from "@mui/material/TextField";
 import Autocomplete from "@mui/material/Autocomplete";
 import { apiRoutes } from "../../utils/apiRoutes";
 import axios from "axios";
 import ReactApexChart from "react-apexcharts";
+import { UserContext } from "../../Context/UserContext";
 
 function ImporterWiseDetails(props) {
   const selectedYear = props.selectedYear;
@@ -14,6 +15,7 @@ function ImporterWiseDetails(props) {
 
   const [data, setData] = useState([]);
   const { importerListAPI, importerJobsAPI } = apiRoutes();
+  const { user } = useContext(UserContext);
 
   const importerNames = importerData.map((importer) => {
     return importer.importer;
@@ -22,7 +24,12 @@ function ImporterWiseDetails(props) {
   // Get importer list for MUI autocomplete
   useEffect(() => {
     async function getImporterList() {
-      const res = await axios.get(`${importerListAPI}/${selectedYear}`);
+      const res = await axios.get(`${importerListAPI}/${selectedYear}`, {
+        headers: {
+          Authorization: `Bearer ${user.token}`,
+          "Content-Type": "application/json",
+        },
+      });
       setImporterData(res.data);
       // Check if importerData is not empty before setting the selectedImporter
       if (res.data.length > 0) {
@@ -54,7 +61,13 @@ function ImporterWiseDetails(props) {
             .replace(/\)/g, "")
             .replace(/\[/g, "")
             .replace(/\]/g, "")
-            .replace(/,/g, "")}/${selectedYear}`
+            .replace(/,/g, "")}/${selectedYear}`,
+          {
+            headers: {
+              Authorization: `Bearer ${user.token}`,
+              "Content-Type": "application/json",
+            },
+          }
         );
 
         setData(res.data);

@@ -63,13 +63,23 @@ function ResponsiveDrawer() {
 
   useEffect(() => {
     async function getLastJobsDate() {
-      const res = await axios(getLastJobsDateAPI);
+      const res = await axios(getLastJobsDateAPI, {
+        headers: {
+          Authorization: `Bearer ${user.token}`,
+          "Content-Type": "application/json",
+        },
+      });
       setLastJobsDate(res.data.lastJobsDate);
     }
     getLastJobsDate();
 
     async function getJobyears() {
-      const res = await axios(getYearsAPI);
+      const res = await axios(getYearsAPI, {
+        headers: {
+          Authorization: `Bearer ${user.token}`,
+          "Content-Type": "application/json",
+        },
+      });
       setYear(res.data);
     }
 

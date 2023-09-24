@@ -1,14 +1,17 @@
+import { useContext } from "react";
 import * as xlsx from "xlsx";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { apiRoutes } from "../utils/apiRoutes";
 import { useState } from "react";
+import { UserContext } from "../Context/UserContext";
 
 function useFileUpload(inputRef, alt, setAlt) {
   const [snackbar, setSnackbar] = useState(false);
   const navigate = useNavigate();
   const { addJobAPI, updateJobsDateAPI } = apiRoutes();
   const [loading, setLoading] = useState(false);
+  const { user } = useContext(UserContext);
 
   const handleFileUpload = (event) => {
     const file = event.target.files[0];
@@ -95,7 +98,12 @@ function useFileUpload(inputRef, alt, setAlt) {
     // Upload data to db
     async function uploadExcelData() {
       setLoading(true);
-      const res = await axios.post(addJobAPI, data);
+      const res = await axios.post(addJobAPI, data, {
+        headers: {
+          Authorization: `Bearer ${user.token}`,
+          "Content-Type": "application/json",
+        },
+      });
       console.log(res);
       if (res.status === 200) {
         setSnackbar(true); // show snackbar
@@ -111,9 +119,18 @@ function useFileUpload(inputRef, alt, setAlt) {
     // update last jobs date in db
     const date = new Date().toLocaleDateString();
     async function updateJobsDate() {
-      const res = await axios.post(updateJobsDateAPI, {
-        date,
-      });
+      const res = await axios.post(
+        updateJobsDateAPI,
+        {
+          date,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${user.token}`,
+            "Content-Type": "application/json",
+          },
+        }
+      );
       console.log(res);
     }
 

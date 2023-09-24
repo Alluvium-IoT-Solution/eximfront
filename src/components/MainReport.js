@@ -5,8 +5,10 @@ import { getTableRowsClassname } from "../utils/getTableRowsClassname";
 import axios from "axios";
 import { apiRoutes } from "../utils/apiRoutes";
 import { SelectedYearContext } from "../Context/SelectedYearContext";
+import { UserContext } from "../Context/UserContext";
 
 function MainReport() {
+  const { user } = useContext(UserContext);
   const [rows, setRows] = useState([]);
   const [total, setTotal] = useState(0);
   const { mainReportAPI } = apiRoutes();
@@ -20,7 +22,13 @@ function MainReport() {
     async function getReport() {
       setPageState((old) => ({ ...old, isLoading: true }));
       const res = await axios.get(
-        `${mainReportAPI}/${selectedYear}/${pageState.page}`
+        `${mainReportAPI}/${selectedYear}/${pageState.page}`,
+        {
+          headers: {
+            Authorization: `Bearer ${user.token}`,
+            "Content-Type": "application/json",
+          },
+        }
       );
 
       setRows(res.data.data.sort((a, b) => a.job_no - b.job_no));

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Button } from "@mui/material";
 import { useFormik } from "formik";
 import { TextField } from "@mui/material";
@@ -12,6 +12,7 @@ import FormControl from "@mui/material/FormControl";
 import ListItemText from "@mui/material/ListItemText";
 import Select from "@mui/material/Select";
 import Checkbox from "@mui/material/Checkbox";
+import { UserContext } from "../Context/UserContext";
 
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
@@ -32,6 +33,7 @@ const RemoveJobsForm = (props) => {
 
   const [importerData, setImporterData] = useState([]);
   const [importers, setImporters] = useState([]);
+  const { user } = useContext(UserContext);
 
   const { removeJobsAPI, importerListToAssignJobs, getAssignedImporterAPI } =
     apiRoutes();
@@ -65,7 +67,12 @@ const RemoveJobsForm = (props) => {
         })),
       };
 
-      const res = await axios.post(removeJobsAPI, data);
+      const res = await axios.post(removeJobsAPI, data, {
+        headers: {
+          Authorization: `Bearer ${user.token}`,
+          "Content-Type": "application/json",
+        },
+      });
       if (res.status === 200) {
         alert("Jobs removed successfully");
       }
@@ -77,7 +84,13 @@ const RemoveJobsForm = (props) => {
   useEffect(() => {
     async function getImporterList() {
       const res = await axios.get(
-        `${getAssignedImporterAPI}/${formik.values.user.split(":")[0].trim()}`
+        `${getAssignedImporterAPI}/${formik.values.user.split(":")[0].trim()}`,
+        {
+          headers: {
+            Authorization: `Bearer ${user.token}`,
+            "Content-Type": "application/json",
+          },
+        }
       );
       setImporterData(res.data.map((importer) => importer.importer));
     }

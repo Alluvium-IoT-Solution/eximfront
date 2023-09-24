@@ -34,7 +34,12 @@ function JobsList() {
 
   useEffect(() => {
     async function getReportFields() {
-      const res = await axios(`${reportFieldsAPI}/${params.importer}`);
+      const res = await axios(`${reportFieldsAPI}/${params.importer}`, {
+        headers: {
+          Authorization: `Bearer ${user.token}`,
+          "Content-Type": "application/json",
+        },
+      });
       setHeaders(res.data);
     }
     getReportFields();
@@ -43,7 +48,13 @@ function JobsList() {
 
   const handleReportDownload = async () => {
     const res = await axios.get(
-      `${downloadReportAPI}/${selectedYear}/${params.importer}/${params.status}`
+      `${downloadReportAPI}/${selectedYear}/${params.importer}/${params.status}`,
+      {
+        headers: {
+          Authorization: `Bearer ${user.token}`,
+          "Content-Type": "application/json",
+        },
+      }
     );
 
     convertToExcel(
