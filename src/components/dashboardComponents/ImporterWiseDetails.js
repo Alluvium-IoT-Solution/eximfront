@@ -24,12 +24,7 @@ function ImporterWiseDetails(props) {
   // Get importer list for MUI autocomplete
   useEffect(() => {
     async function getImporterList() {
-      const res = await axios.get(`${importerListAPI}/${selectedYear}`, {
-        headers: {
-          Authorization: `Bearer ${user.token}`,
-          "Content-Type": "application/json",
-        },
-      });
+      const res = await axios.get(`${importerListAPI}/${selectedYear}`, {});
       setImporterData(res.data);
       // Check if importerData is not empty before setting the selectedImporter
       if (res.data.length > 0) {
@@ -61,13 +56,7 @@ function ImporterWiseDetails(props) {
             .replace(/\)/g, "")
             .replace(/\[/g, "")
             .replace(/\]/g, "")
-            .replace(/,/g, "")}/${selectedYear}`,
-          {
-            headers: {
-              Authorization: `Bearer ${user.token}`,
-              "Content-Type": "application/json",
-            },
-          }
+            .replace(/,/g, "")}/${selectedYear}`
         );
 
         setData(res.data);

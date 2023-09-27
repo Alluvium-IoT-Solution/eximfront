@@ -98,12 +98,7 @@ function useFileUpload(inputRef, alt, setAlt) {
     // Upload data to db
     async function uploadExcelData() {
       setLoading(true);
-      const res = await axios.post(addJobAPI, data, {
-        headers: {
-          Authorization: `Bearer ${user.token}`,
-          "Content-Type": "application/json",
-        },
-      });
+      const res = await axios.post(addJobAPI, data, {});
       console.log(res);
       if (res.status === 200) {
         setSnackbar(true); // show snackbar
@@ -119,18 +114,9 @@ function useFileUpload(inputRef, alt, setAlt) {
     // update last jobs date in db
     const date = new Date().toLocaleDateString();
     async function updateJobsDate() {
-      const res = await axios.post(
-        updateJobsDateAPI,
-        {
-          date,
-        },
-        {
-          headers: {
-            Authorization: `Bearer ${user.token}`,
-            "Content-Type": "application/json",
-          },
-        }
-      );
+      const res = await axios.post(updateJobsDateAPI, {
+        date,
+      });
       console.log(res);
     }
 

@@ -91,8 +91,6 @@ export const convertToExcel = async (
       "OUT OF CHARGE DATE": item.out_of_charge_date,
     };
 
-    console.log(item);
-
     // eslint-disable-next-line
     const values = headers.map((val) => {
       if (valueMap[val]) {

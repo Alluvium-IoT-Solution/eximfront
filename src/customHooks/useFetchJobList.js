@@ -25,13 +25,7 @@ function useFetchJobList(detailedStatus, selectedYear) {
       setPageState((old) => ({ ...old, isLoading: true }));
 
       const res = await axios(
-        `${getJobsListAPI}/${selectedYear}/${params.importer}/jobs/${params.status}/${pageState.page}/${filterText}`,
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-            "Content-Type": "application/json",
-          },
-        }
+        `${getJobsListAPI}/${selectedYear}/${params.importer}/jobs/${params.status}/${pageState.page}/${filterText}`
       );
 
       setPageState((old) => ({

@@ -57,8 +57,61 @@ function JobsList() {
       }
     );
 
+    function customSort(a, b) {
+      // Helper function to parse date strings into Date objects
+      function parseDate(dateString) {
+        const parts = dateString.split("-");
+        return new Date(parts[0], parts[1] - 1, parts[2]);
+      }
+
+      // Extract the arrival dates from each job item
+      const arrivalDatesA = a.container_nos.map(
+        (container) => container.arrival_date
+      );
+      const arrivalDatesB = b.container_nos.map(
+        (container) => container.arrival_date
+      );
+
+      // Filter out empty arrival dates
+      const validArrivalDatesA = arrivalDatesA.filter((date) => date);
+      const validArrivalDatesB = arrivalDatesB.filter((date) => date);
+
+      // If there are valid arrival dates in both job items, compare the earliest dates
+      if (validArrivalDatesA.length > 0 && validArrivalDatesB.length > 0) {
+        const earliestDateA = new Date(
+          Math.min(...validArrivalDatesA.map(parseDate))
+        );
+        const earliestDateB = new Date(
+          Math.min(...validArrivalDatesB.map(parseDate))
+        );
+
+        // Compare the dates as Date objects
+        if (earliestDateA < earliestDateB) {
+          return -1;
+        } else if (earliestDateA > earliestDateB) {
+          return 1;
+        } else {
+          return 0;
+        }
+      }
+
+      // If only one job item has valid arrival dates, it comes first
+      if (validArrivalDatesA.length > 0) {
+        return -1;
+      }
+      if (validArrivalDatesB.length > 0) {
+        return 1;
+      }
+
+      // If neither job item has valid arrival dates, leave them in their original order
+      return 0;
+    }
+
+    // Sort the job items using the custom sorting function
+    const sortedJobItems = res.data.sort(customSort);
+
     convertToExcel(
-      res.data,
+      sortedJobItems,
       importerName,
       params.status,
       detailedStatus,

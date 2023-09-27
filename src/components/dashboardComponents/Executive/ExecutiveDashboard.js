@@ -38,37 +38,27 @@ const ExecutiveDashboard = () => {
       <Container fluid className="dashboard-container">
         <div style={{ display: "flex", marginTop: "20px" }}>
           <h4 style={{ flex: 1 }}>Hello, {user.username}</h4>
-          {(user.role === "Executive" || user.role === "Assistant Manager") && (
-            <Autocomplete
-              options={importerList}
-              getOptionLabel={(option) => option}
-              sx={{ width: "500px !important" }}
-              renderInput={(params) => (
-                <TextField {...params} label="Select importer" />
-              )}
-              id="user"
-              name="user"
-              onChange={(event, newValue) => {
-                setImporterName(newValue);
-                setSelectedImporter(newValue);
-                localStorage.setItem("importerName", newValue);
-              }}
-              value={selectedImporter}
-              style={{ marginBottom: "15px" }}
-            />
-          )}
+
+          <Autocomplete
+            options={importerList}
+            getOptionLabel={(option) => option}
+            sx={{ width: "500px !important" }}
+            renderInput={(params) => (
+              <TextField {...params} label="Select importer" />
+            )}
+            id="user"
+            name="user"
+            onChange={(event, newValue) => {
+              setImporterName(newValue);
+              setSelectedImporter(newValue);
+              localStorage.setItem("importerName", newValue);
+            }}
+            value={selectedImporter}
+            style={{ marginBottom: "15px" }}
+          />
         </div>
 
         <JobsOverview selectedYear={selectedYear} />
-
-        <Container fluid className="dashboard-container">
-          <Row>
-            {user.role !== "Executive" && user.role !== "Assistant Manager" && (
-              <ImporterWiseDetails selectedYear={selectedYear} />
-            )}
-            <Col xs={6} className="dashboard-col"></Col>
-          </Row>
-        </Container>
       </Container>
       <RegisterModal
         openRegisterModal={openRegisterModal}

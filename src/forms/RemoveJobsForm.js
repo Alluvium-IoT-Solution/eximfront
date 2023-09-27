@@ -67,12 +67,7 @@ const RemoveJobsForm = (props) => {
         })),
       };
 
-      const res = await axios.post(removeJobsAPI, data, {
-        headers: {
-          Authorization: `Bearer ${user.token}`,
-          "Content-Type": "application/json",
-        },
-      });
+      const res = await axios.post(removeJobsAPI, data, {});
       if (res.status === 200) {
         alert("Jobs removed successfully");
       }
@@ -84,13 +79,7 @@ const RemoveJobsForm = (props) => {
   useEffect(() => {
     async function getImporterList() {
       const res = await axios.get(
-        `${getAssignedImporterAPI}/${formik.values.user.split(":")[0].trim()}`,
-        {
-          headers: {
-            Authorization: `Bearer ${user.token}`,
-            "Content-Type": "application/json",
-          },
-        }
+        `${getAssignedImporterAPI}/${formik.values.user.split(":")[0].trim()}`
       );
       setImporterData(res.data.map((importer) => importer.importer));
     }

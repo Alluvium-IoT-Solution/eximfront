@@ -23,12 +23,7 @@ const RegisterForm = (props) => {
 
     validationSchema: validationSchema,
     onSubmit: async (values) => {
-      const res = await axios.post(registerAPI, values, {
-        headers: {
-          Authorization: `Bearer ${user.token}`,
-          "Content-Type": "application/json",
-        },
-      });
+      const res = await axios.post(registerAPI, values, {});
       console.log(res);
       if (res.data.message === "User already registered") {
         alert(res.data.message);

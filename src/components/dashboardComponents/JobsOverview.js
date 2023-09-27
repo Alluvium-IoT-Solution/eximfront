@@ -44,13 +44,7 @@ function JobsOverview(props) {
               .replace(/\)/g, "")
               .replace(/\[/g, "")
               .replace(/\]/g, "")
-              .replace(/,/g, "")}/${props.selectedYear}`,
-            {
-              headers: {
-                Authorization: `Bearer ${user.token}`,
-                "Content-Type": "application/json",
-              },
-            }
+              .replace(/,/g, "")}/${props.selectedYear}`
           );
           const [totalJobs, pendingJobs, completedJobs, canceledJobs] =
             res.data;
@@ -62,15 +56,7 @@ function JobsOverview(props) {
           });
         }
       } else {
-        const res = await axios.get(
-          `${jobsOverviewAPI}/${props.selectedYear}`,
-          {
-            headers: {
-              Authorization: `Bearer ${user.token}`,
-              "Content-Type": "application/json",
-            },
-          }
-        );
+        const res = await axios.get(`${jobsOverviewAPI}/${props.selectedYear}`);
         setJobs(res.data);
       }
     }
