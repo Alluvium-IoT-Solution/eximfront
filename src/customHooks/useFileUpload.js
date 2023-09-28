@@ -92,9 +92,8 @@ function useFileUpload(inputRef, alt, setAlt) {
       inputRef.current.value = null;
     }
 
-    console.log(data);
-
     // Upload data to db
+    console.log(JSON.stringify(data));
     async function uploadExcelData() {
       setLoading(true);
       const res = await axios.post(addJobAPI, data, {});
