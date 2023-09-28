@@ -147,7 +147,7 @@ function JobDetails() {
             <Col xs={5}>
               <strong>Bill of Lading Number:&nbsp;</strong>
               <span ref={bl_no_ref} className="non-editable-text">
-                {data.awb_bl_no}
+                {data.awb_bl_no.toString()}
               </span>
               <IconButton onClick={handleCopyClick} aria-label="copy-btn">
                 <ContentCopyIcon />
