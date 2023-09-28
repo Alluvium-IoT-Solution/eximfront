@@ -33,6 +33,13 @@ function Importer() {
     // eslint-disable-next-line
   }, [selectedYear]);
 
+  useEffect(() => {
+    if (user.role === "Executive" || user.role === "Assistant Manager") {
+      navigate("/dashboard");
+    }
+    // eslint-disable-next-line
+  }, [user]);
+
   const filteredData = importerData.filter((importer) => {
     if (filterImporter === "") {
       return true;
