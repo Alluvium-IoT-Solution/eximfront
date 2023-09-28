@@ -57,7 +57,7 @@ function JobsList() {
       }
     );
 
-    function customSort(a, b) {
+    function sortArrivalDate(a, b) {
       // Helper function to parse date strings into Date objects
       function parseDate(dateString) {
         const parts = dateString.split("-");
@@ -108,7 +108,51 @@ function JobsList() {
     }
 
     // Sort the job items using the custom sorting function
-    const sortedJobItems = res.data.sort(customSort);
+    const sortedArrivalDate = res.data.sort(sortArrivalDate);
+
+    function sortETA(a, b) {
+      // Helper function to parse date strings into Date objects
+      function parseDate(dateString) {
+        const parts = dateString.split("-");
+        return new Date(parts[0], parts[1] - 1, parts[2]);
+      }
+
+      // Extract the arrival dates from each job item
+      const etaA = a.container_nos.map((container) => container.arrival_date);
+      const etaB = b.container_nos.map((container) => container.arrival_date);
+
+      // Filter out empty arrival dates
+      const validEtaA = etaA.filter((date) => date);
+      const validEtaB = etaB.filter((date) => date);
+
+      // If there are valid arrival dates in both job items, compare the earliest dates
+      if (validEtaA.length > 0 && validEtaB.length > 0) {
+        const earliestDateA = new Date(Math.min(...validEtaA.map(parseDate)));
+        const earliestDateB = new Date(Math.min(...validEtaB.map(parseDate)));
+
+        // Compare the dates as Date objects
+        if (earliestDateA < earliestDateB) {
+          return -1;
+        } else if (earliestDateA > earliestDateB) {
+          return 1;
+        } else {
+          return 0;
+        }
+      }
+
+      // If only one job item has valid arrival dates, it comes first
+      if (validEtaA.length > 0) {
+        return -1;
+      }
+      if (validEtaB.length > 0) {
+        return 1;
+      }
+
+      // If neither job item has valid arrival dates, leave them in their original order
+      return 0;
+    }
+
+    const sortedJobItems = sortedArrivalDate.sort(sortETA);
 
     convertToExcel(
       sortedJobItems,

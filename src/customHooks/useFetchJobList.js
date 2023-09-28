@@ -36,55 +36,55 @@ function useFetchJobList(detailedStatus, selectedYear) {
       setRows(res.data.data);
       setTotal(res.data.total);
 
-      function sortArrayByPriority(array) {
-        const priorityOrder = [
-          "Custom Clearance Completed",
-          "BE Noted, Clearance Pending",
-          "BE Noted, Arrival Pending",
-          "Gateway IGM Filed",
-          "Discharged",
-          "Estimated Time of Arrival",
-        ];
+      // function sortArrayByPriority(array) {
+      //   const priorityOrder = [
+      //     "Custom Clearance Completed",
+      //     "BE Noted, Clearance Pending",
+      //     "BE Noted, Arrival Pending",
+      //     "Gateway IGM Filed",
+      //     "Discharged",
+      //     "Estimated Time of Arrival",
+      //   ];
 
-        const sortedArray = [];
-        const remainingArray = [];
+      //   const sortedArray = [];
+      //   const remainingArray = [];
 
-        array.forEach((item) => {
-          if (
-            item.detailed_status &&
-            priorityOrder.includes(item.detailed_status)
-          ) {
-            sortedArray.push(item);
-          } else {
-            remainingArray.push(item);
-          }
-        });
+      //   array.forEach((item) => {
+      //     if (
+      //       item.detailed_status &&
+      //       priorityOrder.includes(item.detailed_status)
+      //     ) {
+      //       sortedArray.push(item);
+      //     } else {
+      //       remainingArray.push(item);
+      //     }
+      //   });
 
-        sortedArray.sort((a, b) => {
-          const priorityA = priorityOrder.indexOf(a.detailed_status);
-          const priorityB = priorityOrder.indexOf(b.detailed_status);
+      //   sortedArray.sort((a, b) => {
+      //     const priorityA = priorityOrder.indexOf(a.detailed_status);
+      //     const priorityB = priorityOrder.indexOf(b.detailed_status);
 
-          return priorityA - priorityB;
-        });
+      //     return priorityA - priorityB;
+      //   });
 
-        return sortedArray.concat(remainingArray);
-      }
+      //   return sortedArray.concat(remainingArray);
+      // }
 
-      const sortedArray = sortArrayByPriority(res.data.data);
+      // const sortedArray = sortArrayByPriority(res.data.data);
 
       if (detailedStatus === "") {
-        setRows(sortedArray);
+        setRows(res.data.data);
       } else if (detailedStatus === "Estimated Time of Arrival") {
         const filteredRows = res.data.data.filter(
           (item) => item.detailed_status === detailedStatus
         );
 
-        const sortedRows = filteredRows.sort((a, b) => {
-          const dateA = convertToTimestamp(a.be_date);
-          const dateB = convertToTimestamp(b.be_date);
-          return dateA - dateB;
-        });
-        setRows(sortedRows);
+        // const sortedRows = filteredRows.sort((a, b) => {
+        //   const dateA = convertToTimestamp(a.be_date);
+        //   const dateB = convertToTimestamp(b.be_date);
+        //   return dateA - dateB;
+        // });
+        setRows(filteredRows);
       } else if (detailedStatus === "Discharged") {
         const filteredRows = res.data.data.filter(
           (item) => item.detailed_status === detailedStatus
@@ -100,12 +100,12 @@ function useFetchJobList(detailedStatus, selectedYear) {
         const filteredRows = res.data.data.filter(
           (item) => item.detailed_status === detailedStatus
         );
-        const sortedRows = filteredRows.sort((a, b) => {
-          const dateA = convertToTimestamp(a.arrival_date);
-          const dateB = convertToTimestamp(b.arrival_date);
-          return dateA - dateB;
-        });
-        setRows(sortedRows);
+        // const sortedRows = filteredRows.sort((a, b) => {
+        //   const dateA = convertToTimestamp(a.arrival_date);
+        //   const dateB = convertToTimestamp(b.arrival_date);
+        //   return dateA - dateB;
+        // });
+        setRows(filteredRows);
       } else if (detailedStatus === "BE Noted, Clearance Pending") {
         const filteredRows = res.data.data.filter(
           (item) => item.detailed_status === detailedStatus
