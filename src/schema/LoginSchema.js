@@ -9,6 +9,6 @@ export const validationSchema = yup.object({
     .email("Invalid email")
     .required("Please enter your email")
     .matches(emailRegex, "Invalid email"),
-  otp: yup.string("Enter OTP").required("OTP is required"),
+  // otp: yup.string("Enter OTP").required("OTP is required"),
   password: yup.string("Enter a password").required("Password is required"),
 });

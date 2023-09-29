@@ -32,7 +32,7 @@ export function apiRoutes() {
 
   /////////////////////////////////////////////////////////////////////////////////////////////////
 
-  // server
+  // // server
   const loginAPI = "http://15.206.69.192:9002/api/login";
   const registerAPI = "http://15.206.69.192:9002/api/register";
   const getJobsListAPI = `http://15.206.69.192:9002/api`;

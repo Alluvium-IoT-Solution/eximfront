@@ -1,5 +1,5 @@
 export const detailedStatusOptions = [
-  { id: 1, name: "Select Status", value: "" },
+  { id: 1, name: "Select Status", value: "all" },
   {
     id: 2,
     name: "Estimated Time of Arrival",

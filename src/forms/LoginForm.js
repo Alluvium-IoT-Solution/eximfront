@@ -14,28 +14,28 @@ const LoginForm = (props) => {
   const navigate = useNavigate();
   const { loginAPI, sendOtpAPI } = apiRoutes();
   const { setAssignedImporters } = useContext(AssignedImportersContext);
-  const [otpSent, setOtpSent] = useState(false);
+  // const [otpSent, setOtpSent] = useState(false);
   const [timeRemaining, setTimeRemaining] = useState(300);
 
-  useEffect(() => {
-    let intervalId;
+  // useEffect(() => {
+  //   let intervalId;
 
-    if (otpSent && timeRemaining > 0) {
-      intervalId = setInterval(() => {
-        setTimeRemaining((prevTime) => prevTime - 1);
-      }, 1000);
-    }
+  //   if (otpSent && timeRemaining > 0) {
+  //     intervalId = setInterval(() => {
+  //       setTimeRemaining((prevTime) => prevTime - 1);
+  //     }, 1000);
+  //   }
 
-    return () => {
-      clearInterval(intervalId);
-    };
-  }, [otpSent, timeRemaining]);
+  //   return () => {
+  //     clearInterval(intervalId);
+  //   };
+  // }, [otpSent, timeRemaining]);
 
   const formik = useFormik({
     initialValues: {
       email: "",
       password: "",
-      otp: "",
+      // otp: "",
     },
 
     validationSchema: validationSchema,
@@ -48,7 +48,7 @@ const LoginForm = (props) => {
       } else if (res.data.message === "Password didn't match") {
         alert(res.data.message);
       } else if (res.data.message === "Login Successful") {
-        setOtpSent(false);
+        // setOtpSent(false);
         localStorage.setItem("user", JSON.stringify(res.data));
         setUser(res.data);
         setAssignedImporters(res.data.importers);
@@ -61,18 +61,18 @@ const LoginForm = (props) => {
     },
   });
 
-  const sendOtp = async () => {
-    if (formik.values.email === "") {
-      alert("Please enter email");
-    } else {
-      setOtpSent(true);
-      setTimeRemaining(300);
-      const res = await axios.post(sendOtpAPI, {
-        email: formik.values.email,
-      });
-      console.log(res);
-    }
-  };
+  // const sendOtp = async () => {
+  //   if (formik.values.email === "") {
+  //     alert("Please enter email");
+  //   } else {
+  //     setOtpSent(true);
+  //     setTimeRemaining(300);
+  //     const res = await axios.post(sendOtpAPI, {
+  //       email: formik.values.email,
+  //     });
+  //     console.log(res);
+  //   }
+  // };
 
   return (
     <form onSubmit={formik.handleSubmit}>
@@ -105,7 +105,7 @@ const LoginForm = (props) => {
         helperText={formik.touched.password && formik.errors.password}
         className="login-input"
       />
-      <div>
+      {/* <div>
         {otpSent === false ? (
           <p
             onClick={sendOtp}
@@ -140,9 +140,9 @@ const LoginForm = (props) => {
           helperText={formik.touched.otp && formik.errors.otp}
           className="login-input"
         />
-      )}
+      )} */}
       <Button
-        disabled={!otpSent}
+        // disabled={!otpSent}
         fullWidth
         type="submit"
         className="submit-form-btn"

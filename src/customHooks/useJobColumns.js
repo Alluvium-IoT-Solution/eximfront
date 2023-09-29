@@ -38,7 +38,7 @@ function useJobColumns(detailedStatus) {
         detailedStatus === "Estimated Time of Arrival" ||
         detailedStatus === "Gateway IGM Filed" ||
         detailedStatus === "Discharged" ||
-        detailedStatus === ""
+        detailedStatus === "all"
           ? false
           : true,
     },
@@ -99,7 +99,7 @@ function useJobColumns(detailedStatus) {
         detailedStatus === "Estimated Time of Arrival" ||
         detailedStatus === "Gateway IGM Filed" ||
         detailedStatus === "BE Noted, Arrival Pending" ||
-        detailedStatus === ""
+        detailedStatus === "all"
           ? false
           : true,
       renderCell: (cell) => {

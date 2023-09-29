@@ -1,23 +1,25 @@
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
-import { convertToTimestamp } from "../utils/convertToTimestamp";
+// import { convertToTimestamp } from "../utils/convertToTimestamp";
 import { apiRoutes } from "../utils/apiRoutes";
-import { UserContext } from "../Context/UserContext";
 
 function useFetchJobList(detailedStatus, selectedYear) {
   const [rows, setRows] = useState([]);
   const params = useParams();
   const { getJobsListAPI } = apiRoutes();
-  const [filterText, setFilterText] = useState("all");
+  const [filterJobNumber, setFilterJobNumber] = useState("all");
   const [pageState, setPageState] = useState({
     isLoading: false,
     page: 1,
   });
   const [total, setTotal] = useState(0);
-  const { user } = useContext(UserContext);
 
-  const token = user.token;
+  useEffect(() => {
+    if (filterJobNumber === "") {
+      setFilterJobNumber("all");
+    }
+  }, [filterJobNumber]);
 
   useEffect(() => {
     async function getData() {
@@ -25,7 +27,12 @@ function useFetchJobList(detailedStatus, selectedYear) {
       setPageState((old) => ({ ...old, isLoading: true }));
 
       const res = await axios(
-        `${getJobsListAPI}/${selectedYear}/${params.importer}/jobs/${params.status}/${pageState.page}/${filterText}`
+        `${getJobsListAPI}/${selectedYear}/${params.importer}/jobs/${
+          params.status
+        }/${pageState.page}/${filterJobNumber}/${detailedStatus
+          .toLowerCase()
+          .replace(/ /g, "_")
+          .replace(/,/g, "")}`
       );
 
       setPageState((old) => ({
@@ -72,7 +79,7 @@ function useFetchJobList(detailedStatus, selectedYear) {
 
       // const sortedArray = sortArrayByPriority(res.data.data);
 
-      if (detailedStatus === "") {
+      if (detailedStatus === "all") {
         setRows(res.data.data);
       } else if (detailedStatus === "Estimated Time of Arrival") {
         const filteredRows = res.data.data.filter(
@@ -129,10 +136,10 @@ function useFetchJobList(detailedStatus, selectedYear) {
     params.importer,
     pageState.page,
     pageState.pageSize,
-    filterText,
+    filterJobNumber,
   ]);
 
-  return { rows, total, pageState, setPageState, setFilterText };
+  return { rows, total, pageState, setPageState, setFilterJobNumber };
 }
 
 export default useFetchJobList;
