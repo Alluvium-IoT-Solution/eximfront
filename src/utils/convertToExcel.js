@@ -179,7 +179,7 @@ export const convertToExcel = async (
 
   // Increase the height of the header row
   headerRow.height = 35;
-  console.log(dataWithHeaders);
+
   ///////////////////////////////////////  Data Row  //////////////////////////////////////
   // Add the data rows
   for (const row of dataWithHeaders) {
@@ -422,10 +422,46 @@ export const convertToExcel = async (
 
   worksheet.mergeCells(`A${summaryRow.number}:E${summaryRow.number}`); // Merge cells for the "Summary" row
 
+  const containersWithSize20AndArrival = rows.filter((item) => {
+    return item.container_nos.some(
+      (container) => container.size === "20" && container.arrival_date
+    );
+  }).length;
+
+  const containersWithSize40AndArrival = rows.filter((item) => {
+    return item.container_nos.some(
+      (container) => container.size === "40" && container.arrival_date
+    );
+  }).length;
+
+  const containersWithSize20AndNoArrival = rows.filter((item) => {
+    return item.container_nos.some(
+      (container) => container.size === "20" && !container.arrival_date
+    );
+  }).length;
+
+  const containersWithSize40AndNoArrival = rows.filter((item) => {
+    return item.container_nos.some(
+      (container) => container.size === "40" && !container.arrival_date
+    );
+  }).length;
+
+  const totalContainers =
+    containersWithSize20AndArrival +
+    containersWithSize40AndArrival +
+    containersWithSize20AndNoArrival +
+    containersWithSize40AndNoArrival;
+
   // Add the new table with merged cells
   const newTableData = [
     ["20'", "40'", "20'", "40'", ""],
-    ["1", "2", "3", "4", "5"],
+    [
+      containersWithSize20AndArrival,
+      containersWithSize40AndArrival,
+      containersWithSize20AndNoArrival,
+      containersWithSize40AndNoArrival,
+      totalContainers,
+    ],
   ];
 
   // Get the starting row number for the new table
