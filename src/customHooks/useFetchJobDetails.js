@@ -54,6 +54,7 @@ function useFetchJobDetails(params, checked, selectedYear, setSelectedRegNo) {
       physical_weight: "",
       tare_weight: "",
       container_images: "",
+      weighment_slip_images: "",
     },
 
     onSubmit: async (values) => {
@@ -116,6 +117,10 @@ function useFetchJobDetails(params, checked, selectedYear, setSelectedRegNo) {
           container.container_images === undefined
             ? []
             : container.container_images,
+        weighment_slip_images:
+          container.weighment_slip_images === undefined
+            ? []
+            : container.weighment_slip_images,
       }));
 
       formik.setValues({
