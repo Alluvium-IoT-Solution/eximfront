@@ -51,7 +51,7 @@ function ResponsiveDrawer() {
   const inputRef = useRef();
   const [lastJobsDate, setLastJobsDate] = useState();
   const { getLastJobsDateAPI, getYearsAPI } = apiRoutes();
-  const [year, setYear] = useState([]);
+  const [year, setYear] = useState(["23-24"]);
   const { selectedYear, setSelectedYear } = useContext(SelectedYearContext);
   const [alt, setAlt] = useState(false);
   const { handleFileUpload, snackbar, loading } = useFileUpload(
@@ -73,17 +73,17 @@ function ResponsiveDrawer() {
     }
     getLastJobsDate();
 
-    async function getJobyears() {
-      const res = await axios(getYearsAPI, {
-        headers: {
-          Authorization: `Bearer ${user.token}`,
-          "Content-Type": "application/json",
-        },
-      });
-      setYear(res.data);
-    }
+    // async function getJobyears() {
+    //   const res = await axios(getYearsAPI, {
+    //     headers: {
+    //       Authorization: `Bearer ${user.token}`,
+    //       "Content-Type": "application/json",
+    //     },
+    //   });
+    //   setYear(res.data);
+    // }
 
-    getJobyears();
+    // getJobyears();
     // eslint-disable-next-line
   }, [alt]);
 

@@ -1,7 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { DataGrid } from "@mui/x-data-grid";
 import "../styles/job-list.scss";
-import { getTableRowsClassname } from "../utils/getTableRowsClassname";
 import axios from "axios";
 import { apiRoutes } from "../utils/apiRoutes";
 import { SelectedYearContext } from "../Context/SelectedYearContext";

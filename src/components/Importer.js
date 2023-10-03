@@ -17,7 +17,6 @@ function Importer() {
   const { selectedYear } = useContext(SelectedYearContext);
   const { user } = useContext(UserContext);
   const token = user.token;
-  console.log(`${importerListAPI}/${selectedYear}`);
 
   useEffect(() => {
     async function getImporterList() {

@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Button } from "@mui/material";
 import { useFormik } from "formik";
 import { TextField } from "@mui/material";
@@ -12,7 +12,6 @@ import FormControl from "@mui/material/FormControl";
 import ListItemText from "@mui/material/ListItemText";
 import Select from "@mui/material/Select";
 import Checkbox from "@mui/material/Checkbox";
-import { UserContext } from "../Context/UserContext";
 
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
@@ -33,10 +32,8 @@ const RemoveJobsForm = (props) => {
 
   const [importerData, setImporterData] = useState([]);
   const [importers, setImporters] = useState([]);
-  const { user } = useContext(UserContext);
 
-  const { removeJobsAPI, importerListToAssignJobs, getAssignedImporterAPI } =
-    apiRoutes();
+  const { removeJobsAPI, getAssignedImporterAPI } = apiRoutes();
 
   const userList = users.map(
     (user) => `${user.username}: Pending Jobs- ${user.jobsCount}`

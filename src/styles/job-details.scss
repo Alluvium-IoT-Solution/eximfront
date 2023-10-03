@@ -23,3 +23,18 @@ form {
     cursor: pointer;
   }
 }
+
+.job-detail-heading-container {
+  display: flex;
+  align-items: baseline;
+  margin-top: 30px;
+
+  h4 {
+    margin: 0px 10px 0px 0px;
+  }
+
+  .job-detail-divider {
+    border-bottom: 3px dashed #273041;
+    flex: 1;
+  }
+}

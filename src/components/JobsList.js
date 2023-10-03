@@ -6,7 +6,7 @@ import useJobColumns from "../customHooks/useJobColumns";
 import { getTableRowsClassname } from "../utils/getTableRowsClassname";
 import useFetchJobList from "../customHooks/useFetchJobList";
 import { detailedStatusOptions } from "../assets/data/detailedStatusOptions";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 // import SelectFieldsModal from "./SelectFieldsModal";
 import { UserContext } from "../Context/UserContext";
 import { SelectedYearContext } from "../Context/SelectedYearContext";
@@ -15,10 +15,19 @@ import axios from "axios";
 import { convertToExcel } from "../utils/convertToExcel";
 
 function JobsList() {
+  useEffect(() => {
+    const savedImporterName = localStorage.getItem("importerName");
+    if (savedImporterName === null || savedImporterName === undefined) {
+      navigate("/importer");
+    }
+    // eslint-disable-next-line
+  }, []);
+
   const { importerName } = useContext(ClientContext);
   const { user } = useContext(UserContext);
   const { selectedYear } = useContext(SelectedYearContext);
   const [headers, setHeaders] = useState([]);
+  const navigate = useNavigate();
 
   const [detailedStatus, setDetailedStatus] = useState("all");
   const columns = useJobColumns(detailedStatus);
@@ -34,12 +43,7 @@ function JobsList() {
 
   useEffect(() => {
     async function getReportFields() {
-      const res = await axios(`${reportFieldsAPI}/${params.importer}`, {
-        headers: {
-          Authorization: `Bearer ${user.token}`,
-          "Content-Type": "application/json",
-        },
-      });
+      const res = await axios(`${reportFieldsAPI}/${params.importer}`);
       setHeaders(res.data);
     }
     getReportFields();
@@ -48,114 +52,11 @@ function JobsList() {
 
   const handleReportDownload = async () => {
     const res = await axios.get(
-      `${downloadReportAPI}/${selectedYear}/${params.importer}/${params.status}`,
-      {
-        headers: {
-          Authorization: `Bearer ${user.token}`,
-          "Content-Type": "application/json",
-        },
-      }
+      `${downloadReportAPI}/${selectedYear}/${params.importer}/${params.status}`
     );
 
-    function sortETA(a, b) {
-      // Helper function to parse date strings into Date objects
-      function parseDate(dateString) {
-        const parts = dateString.split("-");
-        return new Date(parts[0], parts[1] - 1, parts[2]);
-      }
-
-      // Extract the arrival dates from each job item
-      const etaA = a.container_nos.map((container) => container.arrival_date);
-      const etaB = b.container_nos.map((container) => container.arrival_date);
-
-      // Filter out empty arrival dates
-      const validEtaA = etaA.filter((date) => date);
-      const validEtaB = etaB.filter((date) => date);
-
-      // If there are valid arrival dates in both job items, compare the earliest dates
-      if (validEtaA.length > 0 && validEtaB.length > 0) {
-        const earliestDateA = new Date(Math.min(...validEtaA.map(parseDate)));
-        const earliestDateB = new Date(Math.min(...validEtaB.map(parseDate)));
-
-        // Compare the dates as Date objects
-        if (earliestDateA < earliestDateB) {
-          return -1;
-        } else if (earliestDateA > earliestDateB) {
-          return 1;
-        } else {
-          return 0;
-        }
-      }
-
-      // If only one job item has valid arrival dates, it comes first
-      if (validEtaA.length > 0) {
-        return -1;
-      }
-      if (validEtaB.length > 0) {
-        return 1;
-      }
-
-      // If neither job item has valid arrival dates, leave them in their original order
-      return 0;
-    }
-
-    function sortArrivalDate(a, b) {
-      // Helper function to parse date strings into Date objects
-      function parseDate(dateString) {
-        const parts = dateString.split("-");
-        return new Date(parts[0], parts[1] - 1, parts[2]);
-      }
-
-      // Extract the arrival dates from each job item
-      const arrivalDatesA = a.container_nos.map(
-        (container) => container.arrival_date
-      );
-      const arrivalDatesB = b.container_nos.map(
-        (container) => container.arrival_date
-      );
-
-      // Filter out empty arrival dates
-      const validArrivalDatesA = arrivalDatesA.filter((date) => date);
-      const validArrivalDatesB = arrivalDatesB.filter((date) => date);
-
-      // If there are valid arrival dates in both job items, compare the earliest dates
-      if (validArrivalDatesA.length > 0 && validArrivalDatesB.length > 0) {
-        const earliestDateA = new Date(
-          Math.min(...validArrivalDatesA.map(parseDate))
-        );
-        const earliestDateB = new Date(
-          Math.min(...validArrivalDatesB.map(parseDate))
-        );
-
-        // Compare the dates as Date objects
-        if (earliestDateA < earliestDateB) {
-          return -1;
-        } else if (earliestDateA > earliestDateB) {
-          return 1;
-        } else {
-          return 0;
-        }
-      }
-
-      // If only one job item has valid arrival dates, it comes first
-      if (validArrivalDatesA.length > 0) {
-        return -1;
-      }
-      if (validArrivalDatesB.length > 0) {
-        return 1;
-      }
-
-      // If neither job item has valid arrival dates, leave them in their original order
-      return 0;
-    }
-
-    // Sort the job items using the custom sorting function
-    const sortedEta = res.data.sort(sortETA);
-
-    const sortedJobItems = sortedEta.sort(sortArrivalDate);
-
     convertToExcel(
-      sortedJobItems,
+      res.data,
       importerName,
       params.status,
       detailedStatus,
@@ -174,7 +75,10 @@ function JobsList() {
         />
         <select
           name="status"
-          onChange={(e) => setDetailedStatus(e.target.value)}
+          onChange={(e) => {
+            setDetailedStatus(e.target.value);
+            setPageState((old) => ({ ...old, page: 1 }));
+          }}
         >
           {detailedStatusOptions.map((option) => (
             <option key={option.id} value={option.value}>

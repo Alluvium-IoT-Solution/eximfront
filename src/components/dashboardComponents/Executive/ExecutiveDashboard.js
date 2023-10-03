@@ -2,7 +2,6 @@ import React, { useContext, useState } from "react";
 import "../../../styles/dashboard.scss";
 import RegisterModal from "../../modals/RegisterModal";
 import JobsOverview from "../JobsOverview";
-import ImporterWiseDetails from "../ImporterWiseDetails";
 import { Container, Row, Col } from "react-bootstrap";
 import AssignJobsModal from "../AssignJobsModal";
 import { UserContext } from "../../../Context/UserContext";

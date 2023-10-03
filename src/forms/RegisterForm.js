@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React from "react";
 import { useFormik } from "formik";
 import { TextField } from "@mui/material";
 import { validationSchema } from "../schema/RegisterSchema";
@@ -6,10 +6,8 @@ import axios from "axios";
 import { apiRoutes } from "../utils/apiRoutes";
 import { useNavigate } from "react-router-dom";
 import MenuItem from "@mui/material/MenuItem";
-import { UserContext } from "../Context/UserContext";
 
 const RegisterForm = (props) => {
-  const { user } = useContext(UserContext);
   const navigate = useNavigate();
   const { registerAPI } = apiRoutes();
 

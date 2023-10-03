@@ -41,6 +41,9 @@ function useJobColumns(detailedStatus) {
         detailedStatus === "all"
           ? false
           : true,
+      renderCell: (cell) => {
+        return cell.row.awb_bl_no.toString();
+      },
     },
 
     {

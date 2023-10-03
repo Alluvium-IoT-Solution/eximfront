@@ -1,17 +1,17 @@
-import { useEffect, useState, useContext } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { apiRoutes } from "../utils/apiRoutes";
 import axios from "axios";
 import { useFormik } from "formik";
 import { convertDateFormatForUI } from "../utils/convertDateFormatForUI";
-import { UserContext } from "../Context/UserContext";
 
 function useFetchJobDetails(params, checked, selectedYear, setSelectedRegNo) {
   const { updateJobAPI, getJobAPI } = apiRoutes(params.importer, params.jobNo);
   const [data, setData] = useState(null);
   const [detentionFrom, setDetentionFrom] = useState([]);
+  const [actualWeight, setActualWeight] = useState();
+  const [weightShortage, setWeightShortage] = useState();
   const navigate = useNavigate();
-  const { user } = useContext(UserContext);
 
   // Fetch data
   useEffect(() => {
@@ -51,36 +51,12 @@ function useFetchJobDetails(params, checked, selectedYear, setSelectedRegNo) {
       examination_date: "",
       duty_paid_date: "",
       out_of_charge_date: "",
+      physical_weight: "",
+      tare_weight: "",
+      container_images: "",
     },
 
     onSubmit: async (values) => {
-      const a = {
-        eta: values.eta,
-        checked,
-        free_time: values.free_time,
-        status: values.status,
-        detailed_status: values.detailed_status,
-        container_nos: values.container_nos,
-        arrival_date: values.arrival_date,
-        do_validity: values.do_validity,
-        checklist: values.checklist,
-        remarks: values.remarks,
-        description: values.description,
-        sims_reg_no: values.sims_reg_no,
-        pims_reg_no: values.pims_reg_no,
-        nfmims_reg_no: values.nfmims_reg_no,
-        sims_date: values.sims_date,
-        pims_date: values.pims_date,
-        nfmims_date: values.nfmims_date,
-        delivery_date: values.delivery_date,
-        discharge_date: values.discharge_date,
-        assessment_date: values.assessment_date,
-        examination_date: values.examination_date,
-        duty_paid_date: values.duty_paid_date,
-        out_of_charge_date: values.out_of_charge_date,
-      };
-      console.log(a);
-
       const res = await axios.put(
         `${updateJobAPI}/updatejob/${selectedYear}/${params.jobNo}`,
         {
@@ -107,6 +83,8 @@ function useFetchJobDetails(params, checked, selectedYear, setSelectedRegNo) {
           examination_date: values.examination_date,
           duty_paid_date: values.duty_paid_date,
           out_of_charge_date: values.out_of_charge_date,
+          physical_weight: values.physical_weight,
+          tare_weight: values.tare_weight,
         }
       );
       console.log(res);
@@ -134,6 +112,10 @@ function useFetchJobDetails(params, checked, selectedYear, setSelectedRegNo) {
             : convertDateFormatForUI(container.arrival_date), // convert date to yyyy-mm-dd
         container_number: container.container_number,
         size: container.size === undefined ? "20" : container.size,
+        container_images:
+          container.container_images === undefined
+            ? []
+            : container.container_images,
       }));
 
       formik.setValues({
@@ -176,6 +158,9 @@ function useFetchJobDetails(params, checked, selectedYear, setSelectedRegNo) {
           data.duty_paid_date === undefined ? "" : data.duty_paid_date,
         out_of_charge_date:
           data.out_of_charge_date === undefined ? "" : data.out_of_charge_date,
+        physical_weight:
+          data.physical_weight === undefined ? "" : data.physical_weight,
+        tare_weight: data.tare_weight === undefined ? "" : data.tare_weight,
       });
     }
     // eslint-disable-next-line
@@ -228,7 +213,35 @@ function useFetchJobDetails(params, checked, selectedYear, setSelectedRegNo) {
     checked,
   ]);
 
-  return { data, detentionFrom, formik };
+  // Update actual weight
+  useEffect(() => {
+    if (
+      formik.values.physical_weight !== "" &&
+      formik.values.tare_weight !== ""
+    ) {
+      setActualWeight(
+        parseInt(formik.values.physical_weight) -
+          parseInt(formik.values.tare_weight)
+      );
+    }
+  }, [formik.values.physical_weight, formik.values.tare_weight]);
+
+  // Update weight shortage
+  useEffect(() => {
+    if (
+      formik.values.physical_weight !== "" &&
+      formik.values.tare_weight !== "" &&
+      data !== null
+    ) {
+      setWeightShortage(
+        parseInt(parseInt(data.gross_weight.replace(/,/g, ""))) -
+          (parseInt(formik.values.physical_weight) -
+            parseInt(formik.values.tare_weight))
+      );
+    }
+  }, [data, formik.values.physical_weight, formik.values.tare_weight]);
+
+  return { data, detentionFrom, actualWeight, weightShortage, formik };
 }
 
 export default useFetchJobDetails;

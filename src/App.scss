@@ -195,3 +195,14 @@ input[type="number"]::-webkit-outer-spin-button {
 .MuiInputBase-root {
   height: 55px !important;
 }
+
+.uploadBtn-secondary {
+  background-color: #273041;
+  padding: 5px;
+  color: #fff;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  color: #fff;
+  margin: 10px 0;
+}

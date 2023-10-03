@@ -73,7 +73,7 @@ const AssignJobsForm = (props) => {
         })),
       };
 
-      const res = await axios.post(assignJobsAPI, data, {});
+      const res = await axios.post(assignJobsAPI, data);
       if (res.status === 200) {
         alert("Jobs assigned successfully");
       }

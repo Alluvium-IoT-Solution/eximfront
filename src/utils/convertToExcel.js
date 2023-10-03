@@ -559,11 +559,14 @@ export const convertToExcel = async (
     type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
   });
 
-  // Save the Excel file
-  const filename =
-    detailedStatus === ""
-      ? `${importer} - ${status}`
-      : `${importer} - ${detailedStatus}`;
+  // Sanitize the importer and detailedStatus for the filename
+  const sanitizedImporter = importer.replace(/\./g, "");
+  const sanitizedDetailedStatus = detailedStatus.replace(/\./g, "");
 
-  saveAs(data, filename);
+  const newFilename =
+    sanitizedDetailedStatus === ""
+      ? `${sanitizedImporter} - ${status}.xlsx`
+      : `${sanitizedImporter} - ${sanitizedDetailedStatus}.xlsx`;
+
+  saveAs(data, newFilename);
 };
