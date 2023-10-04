@@ -1003,7 +1003,7 @@ function JobDetails() {
                       {checked && <Col></Col>}
                     </Row>
 
-                    <Row>
+                    {/* <Row>
                       <Col>
                         <label
                           htmlFor={`containerImages_${index}`}
@@ -1068,7 +1068,7 @@ function JobDetails() {
                           </>
                         );
                       })}
-                    </Row>
+                    </Row> */}
                   </div>
                   <hr />
                 </div>
