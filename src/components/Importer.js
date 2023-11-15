@@ -39,7 +39,7 @@ function Importer() {
     // eslint-disable-next-line
   }, [user]);
 
-  const filteredData = importerData.filter((importer) => {
+  let filteredData = importerData.filter((importer) => {
     if (filterImporter === "") {
       return true;
     } else if (
@@ -51,6 +51,8 @@ function Importer() {
     return false;
   });
 
+  filteredData = filteredData.filter((importer) => importer.importer !== "--");
+
   const handleClient = (url, name) => {
     setImporter(url);
     setImporterName(name);
@@ -60,7 +62,7 @@ function Importer() {
   };
 
   return (
-    <Container className="importer">
+    <Container fluid className="importer">
       <input
         type="text"
         onChange={(e) => setFilterImporter(e.target.value)}

@@ -52,12 +52,6 @@ function useJobColumns(detailedStatus) {
       headerName: "Bill of Entry Number",
       width: 150,
       align: "center",
-      hide:
-        detailedStatus === "BE Noted, Arrival Pending" ||
-        detailedStatus === "BE Noted, Clearance Pending" ||
-        detailedStatus === "Custom Clearance Completed"
-          ? false
-          : true,
     },
 
     {
@@ -66,12 +60,6 @@ function useJobColumns(detailedStatus) {
       headerName: "Bill of Entry Date",
       width: 150,
       align: "center",
-      hide:
-        detailedStatus === "BE Noted, Arrival Pending" ||
-        detailedStatus === "BE Noted, Clearance Pending" ||
-        detailedStatus === "Custom Clearance Completed"
-          ? false
-          : true,
     },
 
     {
@@ -93,7 +81,7 @@ function useJobColumns(detailedStatus) {
     },
 
     {
-      field: "eta",
+      field: "vessel_berthing_date",
       sortable: false,
       headerName: "ETA",
       width: 150,
@@ -106,11 +94,19 @@ function useJobColumns(detailedStatus) {
           ? false
           : true,
       renderCell: (cell) => {
-        return cell.row.eta === "undefined.undefined.d." ||
-          cell.row.eta === undefined
+        return cell.row.vessel_berthing_date === "undefined.undefined.d." ||
+          cell.row.vessel_berthing_date === undefined
           ? ""
-          : cell.row.eta;
+          : cell.row.vessel_berthing_date;
       },
+    },
+
+    {
+      field: "transporter",
+      sortable: false,
+      headerName: "Transporter",
+      width: 150,
+      align: "center",
     },
 
     {
@@ -121,10 +117,10 @@ function useJobColumns(detailedStatus) {
       align: "center",
       hide: detailedStatus === "Discharged" ? false : true,
       renderCell: (cell) => {
-        return cell.row.eta === "undefined.undefined.d." ||
-          cell.row.eta === undefined
+        return cell.row.vessel_berthing_date === "undefined.undefined.d." ||
+          cell.row.vessel_berthing_date === undefined
           ? ""
-          : cell.row.eta;
+          : cell.row.vessel_berthing_date;
       },
     },
 

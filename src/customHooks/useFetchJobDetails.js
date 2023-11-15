@@ -8,6 +8,7 @@ import { convertDateFormatForUI } from "../utils/convertDateFormatForUI";
 function useFetchJobDetails(params, checked, selectedYear, setSelectedRegNo) {
   const { updateJobAPI, getJobAPI } = apiRoutes(params.importer, params.jobNo);
   const [data, setData] = useState(null);
+  console.log(data);
   const [detentionFrom, setDetentionFrom] = useState([]);
   const [actualWeight, setActualWeight] = useState();
   const [weightShortage, setWeightShortage] = useState();
@@ -29,7 +30,7 @@ function useFetchJobDetails(params, checked, selectedYear, setSelectedRegNo) {
   const formik = useFormik({
     initialValues: {
       container_nos: "",
-      eta: "",
+      vessel_berthing_date: "",
       discharge_date: "",
       status: "",
       detailed_status: "",
@@ -55,13 +56,14 @@ function useFetchJobDetails(params, checked, selectedYear, setSelectedRegNo) {
       tare_weight: "",
       container_images: "",
       weighment_slip_images: "",
+      transporter: "",
     },
 
     onSubmit: async (values) => {
       const res = await axios.put(
         `${updateJobAPI}/updatejob/${selectedYear}/${params.jobNo}`,
         {
-          eta: values.eta,
+          vessel_berthing_date: values.vessel_berthing_date,
           checked,
           free_time: values.free_time,
           status: values.status,
@@ -86,9 +88,9 @@ function useFetchJobDetails(params, checked, selectedYear, setSelectedRegNo) {
           out_of_charge_date: values.out_of_charge_date,
           physical_weight: values.physical_weight,
           tare_weight: values.tare_weight,
+          transporter: values.transporter,
         }
       );
-      console.log(res);
 
       navigate(`/${params.importer}/jobs/pending`);
     },
@@ -126,7 +128,14 @@ function useFetchJobDetails(params, checked, selectedYear, setSelectedRegNo) {
       formik.setValues({
         ...{ container_nos },
         arrival_date: container_nos[0].arrival_date,
-        eta: data.eta === undefined ? "" : convertDateFormatForUI(data.eta),
+        vessel_berthing_date:
+          data.vessel_berthing_date === undefined
+            ? ""
+            : new Date(data.vessel_berthing_date)
+                .toLocaleDateString("en-CA")
+                .split("/")
+                .reverse()
+                .join("-"),
         free_time: data.free_time === undefined ? 14 : data.free_time,
         status: data.status,
         detailed_status:
@@ -166,6 +175,7 @@ function useFetchJobDetails(params, checked, selectedYear, setSelectedRegNo) {
         physical_weight:
           data.physical_weight === undefined ? "" : data.physical_weight,
         tare_weight: data.tare_weight === undefined ? "" : data.tare_weight,
+        transporter: data.transporter === undefined ? "" : data.transporter,
       });
     }
     // eslint-disable-next-line

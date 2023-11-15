@@ -7,19 +7,23 @@ function useFetchJobList(detailedStatus, selectedYear) {
   const [rows, setRows] = useState([]);
   const params = useParams();
   const { getJobsListAPI } = apiRoutes();
-  const [filterJobNumber, setFilterJobNumber] = useState("all");
+  // const [filterJobNumber, setFilterJobNumber] = useState("all");
   const [pageState, setPageState] = useState({
     isLoading: false,
     page: 1,
   });
   const [total, setTotal] = useState(0);
 
-  useEffect(() => {
-    if (filterJobNumber === "") {
-      setFilterJobNumber("all");
-    }
-  }, [filterJobNumber]);
-
+  // useEffect(() => {
+  //   if (filterJobNumber === "") {
+  //     setFilterJobNumber("all");
+  //   }
+  // }, [filterJobNumber]);
+  console.log(
+    `${getJobsListAPI}/${selectedYear}/${params.importer}/jobs/${
+      params.status
+    }/${detailedStatus.toLowerCase().replace(/ /g, "_").replace(/,/g, "")}`
+  );
   useEffect(() => {
     async function getData() {
       setRows([]);
@@ -28,10 +32,7 @@ function useFetchJobList(detailedStatus, selectedYear) {
       const res = await axios(
         `${getJobsListAPI}/${selectedYear}/${params.importer}/jobs/${
           params.status
-        }/${pageState.page}/${filterJobNumber}/${detailedStatus
-          .toLowerCase()
-          .replace(/ /g, "_")
-          .replace(/,/g, "")}`
+        }/${detailedStatus.toLowerCase().replace(/ /g, "_").replace(/,/g, "")}`
       );
 
       setPageState((old) => ({
@@ -53,10 +54,9 @@ function useFetchJobList(detailedStatus, selectedYear) {
     params.importer,
     pageState.page,
     pageState.pageSize,
-    filterJobNumber,
   ]);
 
-  return { rows, total, pageState, setPageState, setFilterJobNumber };
+  return { rows, total, pageState, setPageState };
 }
 
 export default useFetchJobList;

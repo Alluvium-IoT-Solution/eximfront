@@ -6,6 +6,7 @@ import { validationSchema } from "../schema/FeedbackSchema";
 import axios from "axios";
 import { UserContext } from "../Context/UserContext";
 import { apiRoutes } from "../utils/apiRoutes";
+import "../styles/feedback-form.scss";
 
 const FeedbackForm = () => {
   const { user } = useContext(UserContext);
@@ -26,10 +27,7 @@ const FeedbackForm = () => {
   });
 
   return (
-    <form
-      onSubmit={formik.handleSubmit}
-      style={{ width: "60%", margin: "auto", marginTop: "50px" }}
-    >
+    <form onSubmit={formik.handleSubmit} className="feedback-form">
       <TextField
         size="small"
         margin="dense"

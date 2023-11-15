@@ -67,7 +67,7 @@ function JobsOverview(props) {
 
   return (
     <Row className="jobs-overview">
-      <Col xl={6} className="jobs-overview-item">
+      <Col xl={12} className="jobs-overview-item">
         <div className="jobs-overview-item-inner">
           <IconButton aria-label="total-jobs">
             <DensitySmallIcon />
@@ -79,7 +79,7 @@ function JobsOverview(props) {
         </div>
       </Col>
 
-      <Col xl={6} className="jobs-overview-item">
+      <Col xl={12} className="jobs-overview-item">
         <div className="jobs-overview-item-inner">
           <IconButton aria-label="pending-jobs">
             <HourglassBottomIcon />
@@ -91,7 +91,7 @@ function JobsOverview(props) {
         </div>
       </Col>
 
-      <Col xl={6} className="jobs-overview-item">
+      <Col xl={12} className="jobs-overview-item">
         <div className="jobs-overview-item-inner">
           <IconButton aria-label="completed-jobs">
             <CheckCircleOutlineIcon />
@@ -103,7 +103,7 @@ function JobsOverview(props) {
         </div>
       </Col>
 
-      <Col xl={6} className="jobs-overview-item">
+      <Col xl={12} className="jobs-overview-item">
         <div className="jobs-overview-item-inner">
           <IconButton aria-label="canceled-jobs">
             <DoDisturbIcon />

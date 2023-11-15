@@ -81,7 +81,7 @@ export const convertToExcel = async (
       "DETAILED STATUS": item.detailed_status,
       CHECKLIST: item.checklist,
       "DO VALIDITY": item.do_validity,
-      ETA: item.eta,
+      vessel_berthing_date: item.vessel_berthing_date,
       "FREE TIME": item.free_time,
       "INVOICE VALUE AND UNIT PRICE": invoice_value_and_unit_price,
       REMARKS: item.remarks,
@@ -445,6 +445,13 @@ export const convertToExcel = async (
       (container) => container.size === "40" && !container.arrival_date
     );
   }).length;
+
+  console.log(
+    containersWithSize20AndArrival,
+    containersWithSize20AndNoArrival,
+    containersWithSize40AndArrival,
+    containersWithSize40AndNoArrival
+  );
 
   const totalContainers =
     containersWithSize20AndArrival +

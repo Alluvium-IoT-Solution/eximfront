@@ -22,11 +22,28 @@ function useFileUpload(inputRef, alt, setAlt) {
     const content = event.target.result;
     const workbook = xlsx.read(content, { type: "binary" });
 
-    const worksheet = workbook.Sheets[workbook.SheetNames[0]];
+    const sheetName = workbook.SheetNames[0];
+    const worksheet = workbook.Sheets[sheetName];
+
+    // Format awb_bl_no column 
+    const columnToFormat = "H";
+
+    // Loop through all cells in column H and format them as '0' to prevent scientific notation
+    Object.keys(worksheet).forEach(function (cell) {
+      if (cell.startsWith(columnToFormat)) {
+        if (worksheet[cell].w) {
+          delete worksheet[cell].w;
+          worksheet[cell].z = "0";
+        }
+      }
+    });
+
     const jsonData = xlsx.utils.sheet_to_json(worksheet, {
       raw: false,
-      defval: "", // provide an empty string to those cells, which have no content in them
+      defval: "", // provide an empty string to those cells with no content
     });
+
+    console.log(JSON.stringify(jsonData));
 
     // Convert the object keys to lowercase, and in the desired format
     function modifyKeys(data) {
@@ -44,6 +61,12 @@ function useFileUpload(inputRef, alt, setAlt) {
             .replace(/-/g, ""); // replace dashes with nothing
 
           // Extract the year from the job_no using a regular expression
+          if (modifiedKey === "job_no") {
+            const yearMatch = data[i][key].match(/\/(\d{2}-\d{2})$/);
+            if (yearMatch) {
+              modifiedObject["year"] = yearMatch[1];
+            }
+          }
           if (modifiedKey === "job_no") {
             const yearMatch = data[i][key].match(/\/(\d{2}-\d{2})$/);
             if (yearMatch) {
@@ -92,8 +115,6 @@ function useFileUpload(inputRef, alt, setAlt) {
       inputRef.current.value = null;
     }
 
-    // Upload data to db
-    console.log(JSON.stringify(data));
     async function uploadExcelData() {
       setLoading(true);
       const res = await axios.post(addJobAPI, data, {});

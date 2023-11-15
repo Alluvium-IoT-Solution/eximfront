@@ -3,6 +3,7 @@ import TaskAltIcon from "@mui/icons-material/TaskAlt";
 import TableViewIcon from "@mui/icons-material/TableView";
 import SpaceDashboardIcon from "@mui/icons-material/SpaceDashboard";
 import FeedbackIcon from "@mui/icons-material/Feedback";
+import AssessmentIcon from "@mui/icons-material/Assessment";
 
 const importer = localStorage.getItem("importerName");
 
@@ -29,12 +30,18 @@ export function sidebarData(role, importerURL) {
     },
     {
       id: 4,
+      icon: <AssessmentIcon />,
+      name: "View DSR",
+      url: `dsr`,
+    },
+    {
+      id: 5,
       icon: <TableViewIcon />,
       name: "Main Report",
       url: "main_report",
     },
     {
-      id: 5,
+      id: 6,
       icon: <FeedbackIcon />,
       name: "Feedback",
       url: "feedback",

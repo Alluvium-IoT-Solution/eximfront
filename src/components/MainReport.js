@@ -372,8 +372,7 @@ function MainReport() {
       <DataGrid
         getRowId={(row) => row.job_no}
         sx={{
-          padding: "0 30px",
-          height: "680px",
+          height: "80%",
           "& .MuiDataGrid-row:hover": {
             backgroundColor: "#f8f5ff",
           },

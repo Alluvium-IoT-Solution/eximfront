@@ -1,9 +1,7 @@
 import React, { useContext, useState } from "react";
 import "../../../styles/dashboard.scss";
-import RegisterModal from "../../modals/RegisterModal";
 import JobsOverview from "../JobsOverview";
-import { Container, Row, Col } from "react-bootstrap";
-import AssignJobsModal from "../AssignJobsModal";
+import { Container } from "react-bootstrap";
 import { UserContext } from "../../../Context/UserContext";
 import { SelectedYearContext } from "../../../Context/SelectedYearContext";
 import { SelectedImporterContext } from "../../../Context/SelectedImporterContext";
@@ -59,14 +57,6 @@ const ExecutiveDashboard = () => {
 
         <JobsOverview selectedYear={selectedYear} />
       </Container>
-      <RegisterModal
-        openRegisterModal={openRegisterModal}
-        handleCloseRegisterModal={handleCloseRegisterModal}
-      />
-      <AssignJobsModal
-        openAssignJobsModal={openAssignJobsModal}
-        handleCloseAssignJobsModal={handleCloseAssignJobsModal}
-      />
     </>
   );
 };

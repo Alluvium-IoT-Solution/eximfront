@@ -1,7 +1,9 @@
 import React from "react";
 import ReactApexChart from "react-apexcharts";
+import useMediaQuery from "@mui/material/useMediaQuery";
 
 function TrackTasks(props) {
+  const sizeSmall = useMediaQuery("(max-width:768px)");
   const areAllZeros = props.counts.every((number) => number === 0);
   const donutState = {
     series: props.counts,
@@ -62,7 +64,7 @@ function TrackTasks(props) {
   return (
     <div
       className="dashboard-col-inner"
-      style={{ flex: "1 !important", minHeight: "445px" }}
+      style={{ flex: "1 !important", minHeight: sizeSmall ? "300px" : "445px" }}
     >
       <h4 style={{ textAlign: "left" }}>Pending Work</h4>
       {areAllZeros ? (

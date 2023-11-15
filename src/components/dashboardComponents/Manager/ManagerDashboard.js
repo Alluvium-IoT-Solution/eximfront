@@ -4,7 +4,7 @@ import RegisterModal from "../../modals/RegisterModal";
 import JobsOverview from "../JobsOverview";
 import ImporterWiseDetails from "../ImporterWiseDetails";
 import { Container, Row, Col } from "react-bootstrap";
-import AssignJobsModal from "../AssignJobsModal";
+import AssignJobsModal from "../../modals/AssignJobsModal";
 import { UserContext } from "../../../Context/UserContext";
 import SpeedDial from "@mui/material/SpeedDial";
 import SpeedDialIcon from "@mui/material/SpeedDialIcon";
@@ -86,11 +86,11 @@ const ManagerDashboard = () => {
         <JobsOverview selectedYear={selectedYear} />
 
         <Row>
-          <Col className="dashboard-col">
+          <Col sm={12} md={6} className="dashboard-col">
             <ImporterWiseDetails selectedYear={selectedYear} />
           </Col>
 
-          <Col className="dashboard-col">
+          <Col sm={12} md={6} className="dashboard-col">
             <TrackTasks usernames={usernames} counts={counts} />
           </Col>
         </Row>

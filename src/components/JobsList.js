@@ -7,7 +7,6 @@ import { getTableRowsClassname } from "../utils/getTableRowsClassname";
 import useFetchJobList from "../customHooks/useFetchJobList";
 import { detailedStatusOptions } from "../assets/data/detailedStatusOptions";
 import { useNavigate, useParams } from "react-router-dom";
-// import SelectFieldsModal from "./SelectFieldsModal";
 import { UserContext } from "../Context/UserContext";
 import { SelectedYearContext } from "../Context/SelectedYearContext";
 import { apiRoutes } from "../utils/apiRoutes";
@@ -27,19 +26,17 @@ function JobsList() {
   const { user } = useContext(UserContext);
   const { selectedYear } = useContext(SelectedYearContext);
   const [headers, setHeaders] = useState([]);
+
   const navigate = useNavigate();
 
   const [detailedStatus, setDetailedStatus] = useState("all");
   const columns = useJobColumns(detailedStatus);
-  const { rows, total, pageState, setPageState, setFilterJobNumber } =
-    useFetchJobList(detailedStatus, selectedYear);
+  const { rows, pageState, setPageState, setFilterJobNumber } = useFetchJobList(
+    detailedStatus,
+    selectedYear
+  );
   const params = useParams();
   const { reportFieldsAPI, downloadReportAPI } = apiRoutes();
-
-  // // Modal
-  // const [openModal, setOpenModal] = React.useState(false);
-  // const handleOpenModal = () => setOpenModal(true);
-  // const handleCloseModal = () => setOpenModal(false);
 
   useEffect(() => {
     async function getReportFields() {
@@ -51,6 +48,10 @@ function JobsList() {
   }, [params.importer]);
 
   const handleReportDownload = async () => {
+    if (headers.length === 0) {
+      alert("This importer has not been assigned to any user");
+      return;
+    }
     const res = await axios.get(
       `${downloadReportAPI}/${selectedYear}/${params.importer}/${params.status}`
     );
@@ -68,11 +69,6 @@ function JobsList() {
     <>
       <div className="jobs-list-header">
         <h5>{user.role !== "Executive" ? importerName : user.importer}</h5>
-        <input
-          type="text"
-          placeholder="Search Jobs"
-          onChange={(e) => setFilterJobNumber(e.target.value)}
-        />
         <select
           name="status"
           onChange={(e) => {
@@ -99,8 +95,7 @@ function JobsList() {
       <DataGrid
         getRowId={(row) => row.job_no}
         sx={{
-          padding: "0 30px",
-          height: "600px",
+          height: "80%",
           "& .MuiDataGrid-row:hover": {
             backgroundColor: "#f8f5ff",
           },
@@ -110,32 +105,14 @@ function JobsList() {
         rows={rows}
         columns={columns}
         stickyHeader
-        rowCount={total}
         loading={pageState.isLoading}
         rowsPerPageOptions={[25]}
         getRowHeight={() => "auto"}
-        pagination
-        page={pageState.page - 1}
         pageSize={25}
-        paginationMode="server"
-        onPageChange={(newPage) => {
-          setPageState((old) => ({ ...old, page: newPage + 1 }));
-        }}
         autoHeight={false}
         disableSelectionOnClick
         getRowClassName={getTableRowsClassname}
-        disableColumnMenu
       />
-
-      {/* <SelectFieldsModal
-        openModal={openModal}
-        handleOpenModal={handleOpenModal}
-        handleCloseModal={handleCloseModal}
-        rows={rows}
-        importerName={user.role !== "User" ? importerName : user.importer}
-        status={params.status}
-        detailedStatus={detailedStatus}
-      /> */}
     </>
   );
 }

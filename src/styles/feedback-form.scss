@@ -1,0 +1,11 @@
+.feedback-form {
+  width: 60%;
+  margin: auto;
+  margin-top: 50px;
+}
+
+@media only screen and (max-width: 992px) {
+  .feedback-form {
+    width: 100%;
+  }
+}

@@ -160,7 +160,12 @@ function Sidebar() {
             }}
             aria-label="list-item"
           >
-            <div style={{ display: "flex", alignItems: "center" }}>
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+              }}
+            >
               <IconButton sx={{ color: "#ffffff9f" }} aria-label="icon">
                 <LogoutRoundedIcon />
               </IconButton>

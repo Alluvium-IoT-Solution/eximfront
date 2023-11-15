@@ -27,6 +27,7 @@ import InfoIcon from "@mui/icons-material/Info";
 import { Typography } from "@mui/material";
 import { SelectedYearContext } from "../Context/SelectedYearContext";
 import Feedback from "./Feedback";
+import DSR from "./DSR";
 import { UserContext } from "../Context/UserContext";
 
 const drawerWidth = 250;
@@ -248,6 +249,7 @@ function ResponsiveDrawer() {
               path="/:importer/job/:jobNo"
               element={<JobDetails />}
             />
+            <Route exact path="/dsr" element={<DSR />} />
             <Route exact path="/main_report" element={<MainReport />} />
             <Route exact path="/feedback" element={<Feedback />} />
           </Routes>

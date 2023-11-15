@@ -75,8 +75,8 @@ function JobDetails() {
 
     try {
       const s3 = new AWS.S3({
-        accessKeyId: "AKIA2JOSUPLE77GETUU3",
-        secretAccessKey: "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",
+        accessKeyId: "AKIA2JOSUPLE3VFGF4RL",
+        secretAccessKey: "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",
         region: "ap-south-1",
       });
 
@@ -143,8 +143,8 @@ function JobDetails() {
 
     try {
       const s3 = new AWS.S3({
-        accessKeyId: "AKIA2JOSUPLE77GETUU3",
-        secretAccessKey: "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",
+        accessKeyId: "AKIA2JOSUPLE3VFGF4RL",
+        secretAccessKey: "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",
         region: "ap-south-1",
       });
 
@@ -218,69 +218,63 @@ function JobDetails() {
         <form onSubmit={formik.handleSubmit}>
           {/*************************** Row 1 ****************************/}
           <Row className="job-detail-row">
-            <Col xs={5}>
+            <Col xs={12} md={5}>
               <strong>Importer:&nbsp;</strong>
               <span className="non-editable-text">{data.importer}</span>
             </Col>
-            <Col>
+            <Col xs={12} md={3}>
               <strong>Invoice Number:&nbsp;</strong>
               <span className="non-editable-text">{data.invoice_number}</span>
             </Col>
-            <Col>
+            <Col xs={12} md={4}>
               <strong>Invoice Date:&nbsp;</strong>
               <span className="non-editable-text">{data.invoice_date}</span>
             </Col>
           </Row>
-
           {/*************************** Row 2 ****************************/}
           <Row className="job-detail-row">
-            <Col xs={5}>
+            <Col xs={12} md={5}>
               <strong>Invoice Value and Unit Price:&nbsp;</strong>
               <span className="non-editable-text">
                 {invoice_value_and_unit_price}
               </span>
             </Col>
-            <Col>
+            <Col xs={12} md={3}>
               <strong>Bill Number:&nbsp;</strong>
               <span className="non-editable-text">{data.bill_no}</span>
             </Col>
-            <Col>
+            <Col xs={12} md={4}>
               <strong>Bill Date:&nbsp;</strong>
               <span className="non-editable-text">{data.bill_date}</span>
             </Col>
           </Row>
-
           {/*************************** Row 3 ****************************/}
           <Row className="job-detail-row">
-            <Col xs={5}>
+            <Col xs={12} md={5}>
               <strong>POL:&nbsp;</strong>
               <span className="non-editable-text">{data.loading_port}</span>
             </Col>
-            <Col>
+            <Col xs={12} md={5}>
               <strong>Shipping Line:&nbsp;</strong>
               <span className="non-editable-text">
                 {data.shipping_line_airline}
               </span>
             </Col>
-            <Col style={{ display: "flex", alignItems: "center" }}></Col>
           </Row>
-
           {/*************************** Row 4 ****************************/}
           <Row className="job-detail-row">
-            <Col xs={5}>
+            <Col xs={12} md={5}>
               <strong>Bill of Entry Number:&nbsp;</strong>
               <span className="non-editable-text">{data.be_no}</span>
             </Col>
-            <Col>
+            <Col xs={12} md={5}>
               <strong>Bill of Entry Date:&nbsp;</strong>
               <span className="non-editable-text">{data.be_date}</span>
             </Col>
-            <Col></Col>
           </Row>
-
           {/*************************** Row 5 ****************************/}
           <Row className="job-detail-row">
-            <Col xs={5}>
+            <Col xs={12} md={5}>
               <strong>Bill of Lading Number:&nbsp;</strong>
               <span ref={bl_no_ref} className="non-editable-text">
                 {data.awb_bl_no.toString()}
@@ -289,26 +283,22 @@ function JobDetails() {
                 <ContentCopyIcon />
               </IconButton>
             </Col>
-            <Col xs={7}>
+            <Col xs={12} md={5}>
               <strong>Bill of Lading Date:&nbsp;</strong>
               <span className="non-editable-text">{data.awb_bl_date}</span>
             </Col>
-            <Col></Col>
           </Row>
-
           {/*************************** Row 6 ****************************/}
           <Row className="job-detail-row">
-            <Col xs={5}>
+            <Col xs={12} md={5}>
               <strong>Number of Packages:&nbsp;</strong>
               <span className="non-editable-text">{data.no_of_pkgs}</span>
             </Col>
-            <Col>
+            <Col xs={12} md={5}>
               <strong>Gross Weight:&nbsp;</strong>
               <span className="non-editable-text">{data.gross_weight}</span>
             </Col>
-            <Col></Col>
           </Row>
-
           {/*************************** Row 7 ****************************/}
           <div className="job-detail-heading-container">
             <div>
@@ -317,7 +307,7 @@ function JobDetails() {
             <div className="job-detail-divider"></div>
           </div>
           <Row className="job-detail-row">
-            <Col xs={3}>
+            <Col xs={12} md={3}>
               <div className="job-detail-input-container">
                 <strong>Physical Weight:&nbsp;</strong>
                 <TextField
@@ -341,7 +331,7 @@ function JobDetails() {
                 />
               </div>
             </Col>
-            <Col xs={3}>
+            <Col xs={12} md={3}>
               <div className="job-detail-input-container">
                 <strong>Tare Weight:&nbsp;</strong>
                 <TextField
@@ -364,17 +354,24 @@ function JobDetails() {
                 />
               </div>
             </Col>
-            <Col xs={3} style={{ display: "flex", alignItems: "center" }}>
+            <Col
+              xs={12}
+              md={3}
+              style={{ display: "flex", alignItems: "center" }}
+            >
               <strong>Actual Weight:&nbsp;</strong>
               {actualWeight}
             </Col>
 
-            <Col xs={3} style={{ display: "flex", alignItems: "center" }}>
+            <Col
+              xs={12}
+              md={3}
+              style={{ display: "flex", alignItems: "center" }}
+            >
               <strong>Weight Shortage:&nbsp;</strong>
               {weightShortage}
             </Col>
           </Row>
-
           {/*************************** Row 8 ****************************/}
           <div className="job-detail-heading-container">
             <div>
@@ -383,7 +380,7 @@ function JobDetails() {
             <div className="job-detail-divider"></div>
           </div>
           <Row className="job-detail-row">
-            <Col xs={5}>
+            <Col xs={12} md={4}>
               <div className="job-detail-input-container">
                 <strong>Description:&nbsp;</strong>
                 <TextField
@@ -406,7 +403,7 @@ function JobDetails() {
                 />
               </div>
             </Col>
-            <Col xs={3}>
+            <Col xs={12} md={4}>
               <div className="job-detail-input-container">
                 <strong>Checklist:&nbsp;</strong>
                 <TextField
@@ -427,9 +424,29 @@ function JobDetails() {
                 />
               </div>
             </Col>
-            <Col></Col>
+            <Col xs={12} md={4}>
+              <div className="job-detail-input-container">
+                <strong>Transporter:&nbsp;</strong>
+                <TextField
+                  size="large"
+                  margin="normal"
+                  variant="outlined"
+                  id="transporter"
+                  name="transporter"
+                  label=""
+                  value={formik.values.transporter}
+                  onChange={formik.handleChange}
+                  error={
+                    formik.touched.transporter &&
+                    Boolean(formik.errors.transporter)
+                  }
+                  helperText={
+                    formik.touched.transporter && formik.errors.transporter
+                  }
+                />
+              </div>
+            </Col>
           </Row>
-
           {/*************************** Row 9 ****************************/}
           <div className="job-detail-heading-container">
             <div>
@@ -438,7 +455,7 @@ function JobDetails() {
             <div className="job-detail-divider"></div>
           </div>
           <Row>
-            <Col>
+            <Col xs={12} md={3}>
               <div className="job-detail-input-container">
                 <strong>Status:&nbsp;</strong>
                 <TextField
@@ -458,7 +475,7 @@ function JobDetails() {
                 </TextField>
               </div>
             </Col>
-            <Col>
+            <Col xs={12} md={3}>
               <div className="job-detail-input-container">
                 <strong>Detailed Status:&nbsp;</strong>
                 <TextField
@@ -491,9 +508,7 @@ function JobDetails() {
                 </TextField>
               </div>
             </Col>
-            <Col></Col>
           </Row>
-
           {/*************************** Row 10 ****************************/}
           <div className="job-detail-heading-container">
             <div>
@@ -502,7 +517,7 @@ function JobDetails() {
             <div className="job-detail-divider"></div>
           </div>
           <Row style={{ marginTop: "10px" }}>
-            <Col xs={4}>
+            <Col xs={12} md={4}>
               <FormControl>
                 <RadioGroup
                   row
@@ -529,7 +544,7 @@ function JobDetails() {
                 </RadioGroup>
               </FormControl>
             </Col>
-            <Col xs={5}>
+            <Col xs={12} md={4}>
               <div className="job-detail-input-container">
                 {selectedRegNo && (
                   <>
@@ -584,7 +599,7 @@ function JobDetails() {
                 )}
               </div>
             </Col>
-            <Col xs={3}>
+            <Col xs={12} md={4}>
               {selectedRegNo && (
                 <div className="job-detail-input-container">
                   <strong>
@@ -635,7 +650,6 @@ function JobDetails() {
               )}
             </Col>
           </Row>
-
           {/*************************** Row 11 ****************************/}
           <div className="job-detail-heading-container">
             <div>
@@ -644,51 +658,36 @@ function JobDetails() {
             <div className="job-detail-divider"></div>
           </div>
           <Row>
-            <Col>
+            <Col xs={12} md={4}>
               <div className="job-detail-input-container">
-                <strong>ETA Date:&nbsp;</strong>
+                <strong>ETA:&nbsp;</strong>
                 <TextField
+                  fullWidth
                   size="large"
                   margin="normal"
                   variant="outlined"
                   type="date"
-                  id="eta"
-                  name="eta"
+                  id="vessel_berthing_date"
+                  name="vessel_berthing_date"
                   label=""
-                  value={formik.values.eta}
-                  onChange={formik.handleChange}
-                  error={formik.touched.eta && Boolean(formik.errors.eta)}
-                  helperText={formik.touched.eta && formik.errors.eta}
-                />
-              </div>
-            </Col>
-            <Col>
-              <div className="job-detail-input-container">
-                <strong>DO Validity:&nbsp;</strong>
-                <TextField
-                  size="large"
-                  type="date"
-                  margin="normal"
-                  variant="outlined"
-                  id="do_validity"
-                  name="do_validity"
-                  label=""
-                  value={formik.values.do_validity}
+                  value={formik.values.vessel_berthing_date}
                   onChange={formik.handleChange}
                   error={
-                    formik.touched.do_validity &&
-                    Boolean(formik.errors.do_validity)
+                    formik.touched.vessel_berthing_date &&
+                    Boolean(formik.errors.vessel_berthing_date)
                   }
                   helperText={
-                    formik.touched.do_validity && formik.errors.do_validity
+                    formik.touched.vessel_berthing_date &&
+                    formik.errors.vessel_berthing_date
                   }
                 />
               </div>
             </Col>
-            <Col>
+            <Col xs={12} md={4}>
               <div className="job-detail-input-container">
                 <strong>Discharge Date:&nbsp;</strong>
                 <TextField
+                  fullWidth
                   size="large"
                   margin="normal"
                   variant="outlined"
@@ -708,14 +707,11 @@ function JobDetails() {
                 />
               </div>
             </Col>
-          </Row>
-
-          {/*************************** Row 12 ****************************/}
-          <Row>
-            <Col xs={4}>
+            <Col xs={12} md={4}>
               <div className="job-detail-input-container">
                 <strong>Assessment Date:&nbsp;</strong>
                 <TextField
+                  fullWidth
                   size="large"
                   margin="normal"
                   variant="outlined"
@@ -735,10 +731,14 @@ function JobDetails() {
                 />
               </div>
             </Col>
-            <Col>
+          </Row>
+          {/*************************** Row 12 ****************************/}
+          <Row>
+            <Col xs={12} md={4}>
               <div className="job-detail-input-container">
                 <strong>Examination Date:&nbsp;</strong>
                 <TextField
+                  fullWidth
                   size="large"
                   margin="normal"
                   variant="outlined"
@@ -758,10 +758,11 @@ function JobDetails() {
                 />
               </div>
             </Col>
-            <Col>
+            <Col xs={12} md={4}>
               <div className="job-detail-input-container">
                 <strong>Duty Paid Date:&nbsp;</strong>
                 <TextField
+                  fullWidth
                   size="large"
                   margin="normal"
                   variant="outlined"
@@ -781,30 +782,38 @@ function JobDetails() {
                 />
               </div>
             </Col>
-          </Row>
-
-          {/*************************** Row 13 ****************************/}
-          <Row>
-            <Col>
+            <Col xs={12} md={4}>
               <div className="job-detail-input-container">
-                <strong>Delivery Date:&nbsp;</strong>
+                <strong>DO Validity:&nbsp;</strong>
                 <TextField
+                  fullWidth
                   size="large"
                   type="date"
                   margin="normal"
                   variant="outlined"
-                  id="delivery_date"
-                  name="delivery_date"
+                  id="do_validity"
+                  name="do_validity"
                   label=""
-                  value={formik.values.delivery_date}
+                  value={formik.values.do_validity}
                   onChange={formik.handleChange}
+                  error={
+                    formik.touched.do_validity &&
+                    Boolean(formik.errors.do_validity)
+                  }
+                  helperText={
+                    formik.touched.do_validity && formik.errors.do_validity
+                  }
                 />
               </div>
             </Col>
-            <Col xs={4}>
+          </Row>
+          {/*************************** Row 13 ****************************/}
+          <Row>
+            <Col xs={12} md={4}>
               <div className="job-detail-input-container">
                 <strong>Out of Charge Date:&nbsp;</strong>
                 <TextField
+                  fullWidth
                   size="large"
                   margin="normal"
                   variant="outlined"
@@ -824,7 +833,24 @@ function JobDetails() {
                 />
               </div>
             </Col>
-            <Col>
+            <Col xs={12} md={4}>
+              <div className="job-detail-input-container">
+                <strong>Delivery Date:&nbsp;</strong>
+                <TextField
+                  fullWidth
+                  size="large"
+                  type="date"
+                  margin="normal"
+                  variant="outlined"
+                  id="delivery_date"
+                  name="delivery_date"
+                  label=""
+                  value={formik.values.delivery_date}
+                  onChange={formik.handleChange}
+                />
+              </div>
+            </Col>
+            <Col xs={12} md={4}>
               <div className="job-detail-input-container">
                 <Checkbox
                   value={checked}
@@ -845,6 +871,7 @@ function JobDetails() {
                   <>
                     <strong>Arrival Date:&nbsp;</strong>
                     <TextField
+                      fullWidth
                       size="large"
                       margin="normal"
                       variant="outlined"
@@ -868,7 +895,6 @@ function JobDetails() {
               </div>
             </Col>
           </Row>
-
           {/*************************** Row 14 ****************************/}
           <div className="job-detail-heading-container">
             <div>
@@ -899,6 +925,61 @@ function JobDetails() {
               </div>
             </Col>
           </Row>
+
+          {/* ************************** Row 15 ************************** */}
+          {/* <div className="job-detail-heading-container">
+            <div>
+              <h4>Queries</h4>
+            </div>
+            <div className="job-detail-divider"></div>
+          </div>
+          <Row>
+            <Col>
+              <div className="job-detail-input-container">
+                <strong>Query:&nbsp;</strong>
+                <TextField
+                  multiline
+                  fullWidth
+                  size="large"
+                  margin="normal"
+                  variant="outlined"
+                  id="query"
+                  name="query"
+                  label=""
+                  value={formik.values.query}
+                  onChange={formik.handleChange}
+                  error={formik.touched.query && Boolean(formik.errors.query)}
+                  helperText={formik.touched.query && formik.errors.query}
+                />
+              </div>
+            </Col>
+            <Col>
+              <div className="job-detail-input-container">
+                <strong>Response:&nbsp;</strong>
+                <TextField
+                  multiline
+                  fullWidth
+                  size="large"
+                  margin="normal"
+                  variant="outlined"
+                  id="response"
+                  name="response"
+                  label=""
+                  value={formik.values.response}
+                  onChange={formik.handleChange}
+                  error={
+                    formik.touched.response && Boolean(formik.errors.response)
+                  }
+                  helperText={formik.touched.response && formik.errors.response}
+                />
+              </div>
+            </Col>
+            <Col>
+              <div className="job-detail-input-container">
+                <button>Add query</button>
+              </div>
+            </Col>
+          </Row> */}
 
           <div className="job-detail-heading-container">
             <div>
@@ -933,10 +1014,11 @@ function JobDetails() {
                     <br />
                     <Row>
                       {!checked && (
-                        <Col xs={4}>
+                        <Col xs={12} md={3}>
                           <div className="job-detail-input-container">
                             <strong>Arrival Date:&nbsp;</strong>
                             <TextField
+                              fullWidth
                               key={index}
                               size="large"
                               margin="normal"
@@ -951,10 +1033,11 @@ function JobDetails() {
                           </div>
                         </Col>
                       )}
-                      <Col xs={2}>
+                      <Col xs={12} md={3}>
                         <div className="job-detail-input-container">
                           <strong>Free Time:&nbsp;</strong>
                           <TextField
+                            fullWidth
                             select
                             size="large"
                             margin="normal"
@@ -975,16 +1058,22 @@ function JobDetails() {
                       </Col>
 
                       <Col
-                        xs={3}
+                        xs={12}
+                        md={3}
                         style={{ display: "flex", alignItems: "center" }}
                       >
                         <strong>Detention From:&nbsp;</strong>
                         {detentionFrom[index]}
                       </Col>
-                      <Col style={{ display: "flex", alignItems: "center" }}>
+                      <Col
+                        xs={12}
+                        md={3}
+                        style={{ display: "flex", alignItems: "center" }}
+                      >
                         <div className="job-detail-input-container">
                           <strong>Size:&nbsp;</strong>
                           <TextField
+                            fullWidth
                             select
                             size="large"
                             margin="normal"
@@ -1003,7 +1092,7 @@ function JobDetails() {
                       {checked && <Col></Col>}
                     </Row>
 
-                    {/* <Row>
+                    <Row>
                       <Col>
                         <label
                           htmlFor={`containerImages_${index}`}
@@ -1068,13 +1157,12 @@ function JobDetails() {
                           </>
                         );
                       })}
-                    </Row> */}
+                    </Row>
                   </div>
                   <hr />
                 </div>
               );
             })}
-
           <Row style={{ margin: "20px 0" }}>
             <Col>
               <button

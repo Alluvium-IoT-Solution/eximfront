@@ -47,7 +47,7 @@ export const selectFieldsdata = [
   { id: 42, name: "Detailed Status", fieldName: "detailed_status" },
   { id: 43, name: "Checklist", fieldName: "checklist" },
   { id: 44, name: "DO Validity", fieldName: "do_validity" },
-  { id: 45, name: "ETA", fieldName: "eta" },
+  { id: 45, name: "ETA", fieldName: "vessel_berthing_date" },
   { id: 46, name: "Free Time", fieldName: "free_time" },
   { id: 47, name: "Remarks", fieldName: "remarks" },
 ];
